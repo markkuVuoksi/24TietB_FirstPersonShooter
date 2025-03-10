@@ -12,13 +12,15 @@ public interface IDamageableSL
 
 public class SL_PlayerShooting : MonoBehaviour
 {
-    public float range = 100.0f;              
+    public float range = 100.0f;
 
-    public float damage = 25.0f;              
+    public float damage = 25.0f;
 
-    public Camera fpsCamera;                  
+    public Camera fpsCamera;
 
-    public LayerMask shootingLayer;           
+    public LayerMask shootingLayer;
+
+    public ParticleSystem explosionParticle;
 
     void Update()
 
@@ -27,6 +29,8 @@ public class SL_PlayerShooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
 
         {
+            //Show particle effect when an object is hit
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
             Shoot();
 
