@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2130710397660265144}
   - component: {fileID: 1625716334236364578}
   m_Layer: 5
-  m_Name: SL_Canvas
+  m_Name: SL_HealthBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
