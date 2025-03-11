@@ -22,6 +22,8 @@ public class SL_PlayerShooting : MonoBehaviour
 
     public ParticleSystem explosionParticle;
 
+    public AudioSource audioSoruce;
+
     void Update()
 
     {
@@ -32,6 +34,9 @@ public class SL_PlayerShooting : MonoBehaviour
             //Show particle effect when an object is hit
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
+            //Play shooting sound
+            audioSoruce.Play();
+            
             Shoot();
 
         }
