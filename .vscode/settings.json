@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "24TIETB_FPS_unity.sln"
+    "dotnet.defaultSolution": "24TietB_FirstPersonShooter.sln"
 }
