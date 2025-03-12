@@ -76,3 +76,6 @@ Assets/Onni/OS_Scenes/SampleScene.unity
 Assets/Onni/OS_Scenes/SampleScene.unity
 Assets/Scenes.meta
 Assets/Scenes/SampleScene.unity
+
+# NavMesh Terrains folder because it contains files with too long filenames
+/[Aa]ssets/[Nn]avMesh/[Tt]errains/
