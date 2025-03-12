@@ -1,8 +1,9 @@
-using System;
+/* using System;
 #if UNITY_EDITOR
 using Unity.AI.Navigation.Samples.Editor;
 using UnityEditor.SceneManagement;
 #endif
+using UnityEditor;
 using UnityEngine;
 
 namespace Unity.AI.Navigation.Samples
@@ -37,4 +38,4 @@ namespace Unity.AI.Navigation.Samples
         }
 #endif
     }
-}
+} */
