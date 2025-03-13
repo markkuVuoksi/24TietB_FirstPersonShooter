@@ -8,7 +8,7 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
 
     public float rollSpeed = 200f;    // Rolling speed
     private Vector3 startPosition;
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
     public ParticleSystem explosionParticle;
 
@@ -17,7 +17,7 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
     void Start()
     {
         startPosition = transform.position;
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<SL_HealthBar>();
         healthBar.UpdateHealthBar(health, maxHealth);
     }
