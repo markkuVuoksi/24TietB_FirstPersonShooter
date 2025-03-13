@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4100283704928308161}
   - component: {fileID: 4495108829349547172}
   - component: {fileID: 4356120243489602512}
+  - component: {fileID: 6191908922267308017}
+  - component: {fileID: 8826498795889284617}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,6 +136,40 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6191908922267308017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358753743808789507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23052dd38df5dcb48a2c946ca5745dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 100
+  damage: 25
+  fpsCamera: {fileID: 237125402764273771}
+  shootingLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  laserTrailPrefab: {fileID: 0}
+--- !u!114 &8826498795889284617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5358753743808789507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303b7a576ab844b47afe9cb36b73bb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadePrefab: {fileID: 515206852780463898, guid: 0b4346c03d1c06744b3628cc0fbdac9f, type: 3}
+  playerCamera: {fileID: 237125402764273771}
+  throwForce: 50
 --- !u!1 &5505844066703225685
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +184,7 @@ GameObject:
   - component: {fileID: 5339432332117115010}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +198,7 @@ Transform:
   m_GameObject: {fileID: 5505844066703225685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5438203, y: 0.48445666, z: -2.2910552}
+  m_LocalPosition: {x: 0.1, y: 0.48445666, z: 0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85320ce073e3ce4aa2384456439d99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 300
 --- !u!1 &6851680263219310342
 GameObject:
   m_ObjectHideFlags: 0
