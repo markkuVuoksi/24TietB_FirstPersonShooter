@@ -9,6 +9,8 @@ public class JJP_Granade : MonoBehaviour
     public float damageAmount = 50f;           // Damage dealt to nearby damageable objects
     public LayerMask damageableLayer;          // Layer mask for detecting damageable objects
 
+    public ParticleSystem explosionEffect;     // Particle effect for explosion
+
     private bool hasExploded = false;          // To check if the grenade has exploded
 
     void Start()
@@ -28,6 +30,15 @@ public class JJP_Granade : MonoBehaviour
     void Explode()
     {
         if (hasExploded) return; // Prevent explosion multiple times
+
+        // Play the explosion effect
+        if (explosionEffect != null)
+        {
+            // Instantiate the explosion effect at the grenade's position and play it
+            ParticleSystem effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            effect.Play();
+            Destroy(effect.gameObject, effect.main.duration);  // Destroy the particle system after it finishes
+        }
 
         // Get all colliders within the blast radius that are on the damageable layer
         Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius, damageableLayer);
@@ -56,9 +67,4 @@ public class JJP_Granade : MonoBehaviour
         hasExploded = true;
         Destroy(gameObject);
     }
-
-    // Update method is not needed, so we can remove it
-    //void Update()
-    //{
-    //}
 }

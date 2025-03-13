@@ -119,6 +119,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &171007711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8783915
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.032151937
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.2875507
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db86ef35afa58544688e5b34bf553662, type: 3}
+      propertyPath: m_Name
+      value: 50_Barrett
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db86ef35afa58544688e5b34bf553662, type: 3}
 --- !u!1 &228190771
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +223,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -465,6 +534,7 @@ GameObject:
   - component: {fileID: 1252097239}
   - component: {fileID: 1252097238}
   - component: {fileID: 1252097244}
+  - component: {fileID: 1252097245}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -621,15 +691,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14215dc84d93c94baca5aa6f81c9789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeJimi: 100
-  damageJimi: 25
+  bulletPrefab: {fileID: 0}
+  shootForce: 20
   fpsCameraJimi: {fileID: 1827422950}
   shootingLayerJimi:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1252097245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252097237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2cc2ac7681b3a4c9f059a205174226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   grenadePrefab: {fileID: 8976244890425587523, guid: 61cc17ebd6843614fa42521eb633be56, type: 3}
   playerCamera: {fileID: 1827422950}
-  throwForce: 10
+  throwForce: 5
+  throwCooldown: 3
 --- !u!1 &1380876574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,3 +1147,4 @@ SceneRoots:
   - {fileID: 1380876577}
   - {fileID: 6792295329020079932}
   - {fileID: 952760804}
+  - {fileID: 171007711}
