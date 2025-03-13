@@ -5,7 +5,7 @@ public class JJP_Enemy : MonoBehaviour, IDamageable_Jimi
     public float healthJimi = 100.0f;
 
     // Implement the TakeDamage method from the IDamageable interface
-    public void TakeDamage(float damageAmount)
+    public void TakeDamageJimi(float damageAmount)
     {
         if (damageAmount < 0)
         {
