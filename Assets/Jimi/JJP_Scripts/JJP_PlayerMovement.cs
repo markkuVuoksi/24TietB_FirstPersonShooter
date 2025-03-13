@@ -13,6 +13,7 @@ public class JJP_PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private float gravity = -9.81f;
     public Camera fpsCamera;
+    
 
     private void Start()
     {
