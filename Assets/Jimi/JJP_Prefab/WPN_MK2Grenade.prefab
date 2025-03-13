@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc47d6d03a2cd0b4ab4297dfd2edfe5f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.1578493
+      value: 1.3190753
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc47d6d03a2cd0b4ab4297dfd2edfe5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.415
+      value: 0.032151997
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc47d6d03a2cd0b4ab4297dfd2edfe5f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5255737
+      value: -1.9761739
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc47d6d03a2cd0b4ab4297dfd2edfe5f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -90,6 +90,7 @@ MonoBehaviour:
   damageableLayer:
     serializedVersion: 2
     m_Bits: 64
+  explosionEffect: {fileID: 198000012777718758, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!54 &2646279562848791297
 Rigidbody:
   m_ObjectHideFlags: 0

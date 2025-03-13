@@ -9,38 +9,29 @@ public interface IDamageable_Jimi
 
 public class JJP_Shooting : MonoBehaviour
 {
-    public float rangeJimi = 100.0f;
-    public float damageJimi = 25.0f;
-    public Camera fpsCameraJimi;
-    public LayerMask shootingLayerJimi;
-
-    
+    public GameObject bulletPrefab;           // Reference to the bullet prefab
+    public float shootForce = 20f;            // The force applied when shooting the bullet
+    public Camera fpsCameraJimi;             // Camera to shoot from
+    public LayerMask shootingLayerJimi;      // The layer mask for shooting (e.g., obstacles, enemies, etc.)
 
     void ShootJimi()
     {
-        RaycastHit hit;
+        // Instantiate the bullet at the camera's position and direction
+        GameObject bullet = Instantiate(bulletPrefab, fpsCameraJimi.transform.position + fpsCameraJimi.transform.forward, Quaternion.identity);
 
-        if (Physics.Raycast(fpsCameraJimi.transform.position, fpsCameraJimi.transform.forward, out hit, rangeJimi, shootingLayerJimi))
+        // Get the Rigidbody component of the bullet
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+
+        if (rb != null)
         {
-            // Debugging: visualize ray
-            Debug.DrawRay(fpsCameraJimi.transform.position, fpsCameraJimi.transform.forward * rangeJimi, Color.red, 2.0f);
-
-            // Check if object is damageable
-            IDamageable_Jimi damageable = hit.transform.GetComponent<IDamageable_Jimi>();
-
-            if (damageable != null)
-
-            {
-
-                damageable.TakeDamageJimi(damageJimi);
-
-            }
+            // Add force to the bullet to make it move forward
+            rb.AddForce(fpsCameraJimi.transform.forward * shootForce, ForceMode.VelocityChange);
         }
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1")) // Fire1 is usually left mouse button or a custom input
         {
             ShootJimi();
         }
