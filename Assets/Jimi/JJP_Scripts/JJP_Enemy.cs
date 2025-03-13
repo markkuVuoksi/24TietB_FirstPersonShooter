@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JJP_Enemy : MonoBehaviour, IDamageable
+public class JJP_Enemy : MonoBehaviour, IDamageable_Jimi
 {
     public float healthJimi = 100.0f;
 

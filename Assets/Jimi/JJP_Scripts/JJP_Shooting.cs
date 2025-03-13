@@ -1,4 +1,11 @@
 using UnityEngine;
+public interface IDamageable_Jimi
+
+{
+
+    void TakeDamageJimi(float damageAmount);
+
+}
 
 public class JJP_Shooting : MonoBehaviour
 {
@@ -37,12 +44,14 @@ public class JJP_Shooting : MonoBehaviour
             Debug.DrawRay(fpsCameraJimi.transform.position, fpsCameraJimi.transform.forward * rangeJimi, Color.red, 2.0f);
 
             // Check if object is damageable
-            IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+            IDamageable_Jimi damageable = hit.transform.GetComponent<IDamageable_Jimi>();
 
             if (damageable != null)
+
             {
-                // Call the TakeDamage method (defined in IDamageable) instead of TakeDamageJimi
-                damageable.TakeDamage(damageJimi);
+
+                damageable.TakeDamageJimi(damageJimi);
+
             }
         }
     }
@@ -53,7 +62,7 @@ public class JJP_Shooting : MonoBehaviour
 
         {
 
-            ThrowGrenadejIMI();
+            ThrowGrenadeJimi();
 
         }
         if (Input.GetButtonDown("Fire1"))
@@ -61,7 +70,7 @@ public class JJP_Shooting : MonoBehaviour
             ShootJimi();
         }
     }
-    void ThrowGrenadejIMI()
+    void ThrowGrenadeJimi()
 
     {
 
