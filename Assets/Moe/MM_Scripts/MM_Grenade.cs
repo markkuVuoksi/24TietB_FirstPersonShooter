@@ -70,7 +70,7 @@ public class MM_Grenade : MonoBehaviour
 
 
 
-            IDamageable damageable = nearbyObject.GetComponent<IDamageable>();
+            IDamageableMM damageable = nearbyObject.GetComponent<IDamageableMM>();
 
             if (damageable != null)
 
