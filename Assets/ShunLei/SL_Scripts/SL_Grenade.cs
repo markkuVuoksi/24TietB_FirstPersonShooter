@@ -54,7 +54,6 @@ public class SL_Grenade : MonoBehaviour
 
 
     void Explode()
-
     {
 
         //Show particle effect when an object is exploded
@@ -66,6 +65,7 @@ public class SL_Grenade : MonoBehaviour
             Debug.Log("Audio Clip: " + audioSource.clip.name);
 
             audioSource.Play();  // Play the AudioSource when collision occurs
+
             Debug.Log("Is Playing: " + audioSource.isPlaying);
         }
         else
