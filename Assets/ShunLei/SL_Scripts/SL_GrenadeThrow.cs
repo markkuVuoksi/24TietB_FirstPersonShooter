@@ -8,6 +8,9 @@ public class SL_GrenadeThrow : MonoBehaviour
 
     public float throwForce = 10f;
 
+    
+    public AudioSource audioSoruce;
+
 
 
     private void Awake()
@@ -33,6 +36,10 @@ public class SL_GrenadeThrow : MonoBehaviour
         if (Input.GetButtonDown("Fire2") && grenadePrefab != null)
 
         {
+             
+
+            //Play throwing sound
+            audioSoruce.Play();
 
             ThrowGrenade();
 
