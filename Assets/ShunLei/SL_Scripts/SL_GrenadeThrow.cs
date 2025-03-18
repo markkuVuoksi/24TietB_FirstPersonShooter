@@ -55,7 +55,7 @@ public class SL_GrenadeThrow : MonoBehaviour
             else
             {
                 // Inform the player if they try to throw the ball before cooldown is over
-                Debug.Log("You need to wait " + (cooldownTime - timeSinceLastThrow).ToString("F1") + " seconds before throwing again.");
+                Debug.Log("You need to wait " + (cooldownTime - timeSinceLastThrow).ToString("F1") + " seconds before throwing Grenade again.");
             }
 
 

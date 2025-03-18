@@ -36,82 +36,71 @@ public class SL_Grenade : MonoBehaviour
             Debug.LogError("No AudioSource found on this GameObject!");
         }
 
-        StartCoroutine(ExplodeAfterDelay());   
-
+        StartCoroutine(ExplodeAfterDelay());
     }
-
-
 
     IEnumerator ExplodeAfterDelay()
-
     {
         yield return new WaitForSeconds(delay);
-
         Explode();
-
     }
 
-
-
-    void Explode()
+    IEnumerator PlaySound()
     {
-
-        //Show particle effect when an object is exploded
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-
         if (audioSource != null)
         {
             // Check if audio is playing
             Debug.Log("Audio Clip: " + audioSource.clip.name);
 
             audioSource.Play();  // Play the AudioSource when collision occurs
-
-            Debug.Log("Is Playing: " + audioSource.isPlaying);
+            while (audioSource.isPlaying)
+            {
+                Debug.Log("Is Playing: " + audioSource.isPlaying);
+                yield return null;
+            }
         }
         else
         {
             Debug.LogWarning("No AudioSource component found on this GameObject.");
         }
+    }
 
+    void Explode()
+    {
+        
         if (hasExploded) return;
-
-
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius, damageableLayer);
 
         foreach (Collider nearbyObject in colliders)
-
         {
-
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-
             if (rb != null)
-
             {
-
                 rb.AddExplosionForce(explosionForce, transform.position, blastRadius);
-
             }
-
-
 
             IDamageableSL damageable = nearbyObject.GetComponent<IDamageableSL>();
-
             if (damageable != null)
-
             {
-
                 damageable.TakeDamage(damageAmount);
-
             }
-
         }
-
-
 
         hasExploded = true;
 
-        Destroy(gameObject);
+        // Start the PlaySound coroutine and wait for it to finish before destroying the game object
+        StartCoroutine(PlaySoundAndDestroy());
+    }
 
+    IEnumerator PlaySoundAndDestroy()
+    {
+        yield return StartCoroutine(PlaySound());
+
+        // Show particle effect when an object is exploded
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+
+        Destroy(gameObject);
+       
     }
 }
