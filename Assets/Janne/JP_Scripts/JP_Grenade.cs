@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class NewEmptyCSharpScript: MonoBehaviour
+public class JP_Grenade: MonoBehaviour
 {
      public float delay = 3f;					
 

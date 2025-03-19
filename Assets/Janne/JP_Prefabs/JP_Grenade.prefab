@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1522590206179756504}
   - component: {fileID: 5079802147847804827}
   m_Layer: 0
-  m_Name: Grenade
+  m_Name: JP_Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   damageAmount: 50
   damageableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &2927100400254791948
 GameObject:
   m_ObjectHideFlags: 0
