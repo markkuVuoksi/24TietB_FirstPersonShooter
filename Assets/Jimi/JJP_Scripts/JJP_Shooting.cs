@@ -10,21 +10,25 @@ public interface IDamageable_Jimi
 public class JJP_Shooting : MonoBehaviour
 {
     public GameObject bulletPrefab;           // Reference to the bullet prefab
-    public float shootForce = 20f;            // The force applied when shooting the bullet
+    public float shootForce = 10.0f;            // The force applied when shooting the bullet
     public Camera fpsCameraJimi;             // Camera to shoot from
     public LayerMask shootingLayerJimi;      // The layer mask for shooting (e.g., obstacles, enemies, etc.)
 
     void ShootJimi()
     {
-        // Instantiate the bullet at the camera's position and direction
-        GameObject bullet = Instantiate(bulletPrefab, fpsCameraJimi.transform.position + fpsCameraJimi.transform.forward, Quaternion.identity);
+        // Instantiate the bullet at the camera's position, slightly in front of the camera
+        Vector3 spawnPosition = fpsCameraJimi.transform.position + fpsCameraJimi.transform.forward;
+        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+
+        // Make the bullet face the same direction as the camera
+        bullet.transform.rotation = Quaternion.LookRotation(fpsCameraJimi.transform.up);
 
         // Get the Rigidbody component of the bullet
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
         if (rb != null)
         {
-            // Add force to the bullet to make it move forward
+            // Add force to the bullet to make it move forward in the direction it's facing
             rb.AddForce(fpsCameraJimi.transform.forward * shootForce, ForceMode.VelocityChange);
         }
     }
