@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 99c45d98e1a468b4a90f61667b744dbc
+timeCreated: 1464096269
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 63667
+  packageName: Free FPS Grenade - Model & Textures
+  packageVersion: 1.0
+  assetPath: Assets/Weapons_ChamferZone/Grenade/Materials/WPNM_MK2Grenade.mat
+  uploadId: 119525
