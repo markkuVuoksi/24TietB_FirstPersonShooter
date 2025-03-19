@@ -30,6 +30,8 @@ public class MM_Shooting : MonoBehaviour
 
             Shoot();
 
+            Debug.Log("Shoot ");
+
         }
 
     }
@@ -50,7 +52,7 @@ public class MM_Shooting : MonoBehaviour
 
             // check if the object is hittable
 
-            IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+            IDamageableMM damageable = hit.transform.GetComponent<IDamageableMM>();
             Debug.Log("Enemy health is: ");
 
             if (damageable != null)

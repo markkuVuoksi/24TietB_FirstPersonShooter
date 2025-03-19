@@ -3,17 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - GunShoot
+  - GrenadeShoot
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - enemy
+  - GunShootEnemy
+  - GrenadeShootEnemy
   - 
   - 
   - 

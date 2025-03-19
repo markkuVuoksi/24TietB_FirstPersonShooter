@@ -4,7 +4,6 @@ using UnityEngine;
 public class Aleksandr_CharacterControlle : MonoBehaviour
 {
     public float speed = 5.0f;
-
     public float jumpHeight = 2.0f;
 
     public float groundDistance = 0.4f;
@@ -13,17 +12,14 @@ public class Aleksandr_CharacterControlle : MonoBehaviour
 
     public Transform groundCheck;
 
-
-
     private CharacterController characterController;
 
     private Transform cameraTransform;
-
     private Vector3 velocity;
 
     private bool isGrounded;
 
-    private float gravity = -9.81f; // saatat joutua t‰t‰ s‰‰t‰m‰‰n fysiikan simuloimiseksi
+    private float gravity = -9.81f; // you may need to adjust this to simulate physics
 
 
 
@@ -34,7 +30,6 @@ public class Aleksandr_CharacterControlle : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         cameraTransform = Camera.main.transform;
-
         if (groundCheck == null)
 
         {
@@ -64,22 +59,20 @@ public class Aleksandr_CharacterControlle : MonoBehaviour
     private void MovePlayer()
 
     {
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
 
         if (isGrounded && velocity.y < 0)
 
         {
 
-            velocity.y = -2f; // pid‰ hahmo maassa
+            velocity.y = -2f; // keep the character on the ground
 
         }
-
-
-
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         float vertical = Input.GetAxisRaw("Vertical");
+
+
 
         Vector3 forwardDirection = cameraTransform.forward;
 
@@ -87,9 +80,11 @@ public class Aleksandr_CharacterControlle : MonoBehaviour
 
 
 
-        forwardDirection.y = 0; // niin ettei pelaaja l‰hde lent‰m‰‰n y akselilla.
+        forwardDirection.y = 0; // so that the player doesn't fly on the y axis.
 
         rightDirection.y = 0;
+
+
 
         forwardDirection.Normalize();
 
@@ -104,10 +99,6 @@ public class Aleksandr_CharacterControlle : MonoBehaviour
 
 
         characterController.Move(movement);
-
-
-
-        // hyppy logiikka
 
         if (Input.GetButtonDown("Jump") && isGrounded)
 
