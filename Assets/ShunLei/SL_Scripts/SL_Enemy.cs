@@ -25,7 +25,7 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
 
     void Update()
     {
-        MoveEnemy();
+        //MoveEnemy();
     }
     public void MoveEnemy()
     {
