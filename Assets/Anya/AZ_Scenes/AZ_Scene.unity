@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 40997769}
   - component: {fileID: 40997768}
   - component: {fileID: 40997773}
+  - component: {fileID: 40997776}
   - component: {fileID: 40997772}
   - component: {fileID: 40997775}
   m_Layer: 0
@@ -296,6 +297,21 @@ MonoBehaviour:
   shootingLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &40997776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40997767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b052a334fe57b7f4f999b76b41c2e075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadePrefab: {fileID: 2949442540562438042, guid: 03d31de8a70a48e45b460a46f875254f, type: 3}
+  playerCamera: {fileID: 1671738719}
+  throwForce: 10
 --- !u!1 &118188275
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +427,7 @@ GameObject:
   - component: {fileID: 652228754}
   - component: {fileID: 652228753}
   - component: {fileID: 652228757}
+  - component: {fileID: 652228758}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -520,6 +537,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!54 &652228758
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652228752}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &905785958
 GameObject:
   m_ObjectHideFlags: 0
