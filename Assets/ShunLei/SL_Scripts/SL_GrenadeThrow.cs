@@ -11,9 +11,11 @@ public class SL_GrenadeThrow : MonoBehaviour
 
     public AudioSource audioSoruce;
 
-    private float cooldownTime = 3f; // Cooldown time in seconds after each throw
+    private float cooldownTime = 2f; // Cooldown time in seconds after each throw
     private float timeSinceLastThrow = 10f; // Timer to track time since last throw
 
+
+    public SL_EnemyManager sL_EnemyManager;
 
 
     private void Awake()
@@ -30,7 +32,10 @@ public class SL_GrenadeThrow : MonoBehaviour
 
     }
 
-
+    void Start()
+    {
+        sL_EnemyManager = GameObject.Find("EnemyManager").GetComponent<SL_EnemyManager>();
+    }
 
     void Update()
 
@@ -38,7 +43,7 @@ public class SL_GrenadeThrow : MonoBehaviour
         // Update the time since the last throw
         timeSinceLastThrow += Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && !sL_EnemyManager.isGameEnd)
 
         {
             // Check if enough time has passed (cooldown is over)
@@ -61,6 +66,8 @@ public class SL_GrenadeThrow : MonoBehaviour
 
 
         }
+
+
 
     }
 
