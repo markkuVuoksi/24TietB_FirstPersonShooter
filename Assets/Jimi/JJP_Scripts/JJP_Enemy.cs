@@ -18,8 +18,14 @@ public class JJP_Enemy : MonoBehaviour, IDamageable_Jimi
 
         if (healthJimi <= 0)
         {
-            Destroy(gameObject);
-            Debug.Log("Enemy destroyed!");
+            Die(); // Call a method to handle enemy death
         }
+    }
+
+    private void Die()
+    {
+        // Optionally play death animation or effect here
+        Destroy(gameObject); // Destroy the enemy
+        Debug.Log("Enemy destroyed!");
     }
 }

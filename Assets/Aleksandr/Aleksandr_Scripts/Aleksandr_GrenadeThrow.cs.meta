@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 98b91c20059ec52478b050b089002138
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - grenadePrefab: {fileID: 2824868129509650895, guid: e00771e17343d574594887250914d98e, type: 3}
+  - playerCamera: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -119,75 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &171007711
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.8783915
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.032151937
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.2875507
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: db86ef35afa58544688e5b34bf553662, type: 3}
-      propertyPath: m_Name
-      value: 50_Barrett
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: db86ef35afa58544688e5b34bf553662, type: 3}
 --- !u!1 &228190771
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14215dc84d93c94baca5aa6f81c9789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 427808207671778079, guid: c16b4a03636080f43b9ec36535122b27, type: 3}
   shootForce: 20
   fpsCameraJimi: {fileID: 1827422950}
   shootingLayerJimi:
@@ -1092,6 +1023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JJP_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4468321156960173579, guid: e44a72877ee85824fa88538f8467e276, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4636497277256733197, guid: e44a72877ee85824fa88538f8467e276, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.571
@@ -1147,4 +1082,3 @@ SceneRoots:
   - {fileID: 1380876577}
   - {fileID: 6792295329020079932}
   - {fileID: 952760804}
-  - {fileID: 171007711}

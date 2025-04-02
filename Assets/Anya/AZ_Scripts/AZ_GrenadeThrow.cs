@@ -1,8 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class AZ_GrenadeThrow : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
     public GameObject grenadePrefab;
 
     public Camera playerCamera;
@@ -47,8 +53,8 @@ public class AZ_GrenadeThrow : MonoBehaviour
 
     {
 
-        GameObject Grenade = Instantiate(grenadePrefab, playerCamera.transform.position + playerCamera.transform.forward, Quaternion.identity);			
-
+        GameObject Grenade = Instantiate(grenadePrefab, playerCamera.transform.position + playerCamera.transform.forward, Quaternion.identity);
+        Grenade.transform.Rotate(-90.0f, 0f, 0f);
         Rigidbody rb = Grenade.GetComponent<Rigidbody>();
 
         if (rb != null)

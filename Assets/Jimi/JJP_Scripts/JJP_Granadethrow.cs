@@ -24,28 +24,24 @@ public class JJP_Granadethrow : MonoBehaviour
 
     void ThrowGrenadeJimi()
     {
-        // Instantiate the grenade at the camera's position plus forward direction
+        // Instantiate the grenade slightly in front of the camera
         GameObject grenade = Instantiate(grenadePrefab, playerCamera.transform.position + playerCamera.transform.forward, Quaternion.identity);
-
         Rigidbody rb = grenade.GetComponent<Rigidbody>();
 
         if (rb != null)
         {
-            // Apply the throw force in the direction the camera is facing
+            // Apply throw force
             rb.AddForce(playerCamera.transform.forward * throwForce, ForceMode.VelocityChange);
         }
     }
 
     void Update()
     {
-        // Check if the player pressed the button to throw a grenade and if the cooldown has passed
+        // Throw grenade only if the cooldown has passed
         if (Input.GetButtonDown("Fire2") && grenadePrefab != null && Time.time >= lastThrowTime + throwCooldown)
         {
-            // Throw the grenade
             ThrowGrenadeJimi();
-
-            // Update the last throw time
-            lastThrowTime = Time.time;
+            lastThrowTime = Time.time; // Update the last throw time
         }
     }
 }
