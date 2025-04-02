@@ -16,22 +16,19 @@ public class JJP_Shooting : MonoBehaviour
 
     void ShootJimi()
     {
-        // Instantiate the bullet at the camera's position, slightly in front of the camera
         Vector3 spawnPosition = fpsCameraJimi.transform.position + fpsCameraJimi.transform.forward;
         GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
 
-        // Make the bullet face the same direction as the camera
-        bullet.transform.rotation = Quaternion.LookRotation(fpsCameraJimi.transform.up);
+        // Set bullet's rotation to match the camera's forward direction
+        bullet.transform.rotation = Quaternion.LookRotation(fpsCameraJimi.transform.forward);
 
-        // Get the Rigidbody component of the bullet
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-
         if (rb != null)
         {
-            // Add force to the bullet to make it move forward in the direction it's facing
             rb.AddForce(fpsCameraJimi.transform.forward * shootForce, ForceMode.VelocityChange);
         }
     }
+
 
     void Update()
     {

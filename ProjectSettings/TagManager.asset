@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GunShoot
   - GrenadeShoot
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -31,31 +31,29 @@ public class JJP_Granade : MonoBehaviour
     {
         if (hasExploded) return; // Prevent explosion multiple times
 
-        // Play the explosion effect
+        // Instantiate explosion effect and play it
         if (explosionEffect != null)
         {
-            // Instantiate the explosion effect at the grenade's position and play it
             ParticleSystem effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
             effect.Play();
-            Destroy(effect.gameObject, effect.main.duration);  // Destroy the particle system after it finishes
+            Destroy(effect.gameObject, effect.main.duration); // Destroy particle system after its effect ends
         }
 
-        // Get all colliders within the blast radius that are on the damageable layer
+        // Apply explosion force and damage
         Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius, damageableLayer);
 
         foreach (Collider nearbyObject in colliders)
         {
-            // Apply explosion force to rigidbodies within blast radius
+            // Apply explosion force
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                // Calculate distance for more realistic force falloff
                 float distance = Vector3.Distance(transform.position, nearbyObject.transform.position);
-                float force = Mathf.Lerp(explosionForce, 0f, distance / blastRadius);  // Reduce force with distance
+                float force = Mathf.Lerp(explosionForce, 0f, distance / blastRadius); // Reduce force with distance
                 rb.AddExplosionForce(force, transform.position, blastRadius);
             }
 
-            // Apply damage to damageable objects
+            // Apply damage
             IDamageable damageable = nearbyObject.GetComponent<IDamageable>();
             if (damageable != null)
             {
@@ -63,8 +61,7 @@ public class JJP_Granade : MonoBehaviour
             }
         }
 
-        // Mark the grenade as exploded and destroy it
         hasExploded = true;
-        Destroy(gameObject);
+        Destroy(gameObject); // Destroy the grenade after explosion
     }
 }
