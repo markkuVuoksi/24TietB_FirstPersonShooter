@@ -30,7 +30,7 @@ public class MM_Shooting : MonoBehaviour
 
             Shoot();
 
-            Debug.Log("Shoot ");
+            Debug.Log("Shoot");
 
         }
 
