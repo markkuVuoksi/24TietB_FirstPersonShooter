@@ -20,6 +20,11 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
         //rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<SL_HealthBar>();
         healthBar.UpdateHealthBar(health, maxHealth);
+
+        if (SL_EnemyManager.Instance != null)
+        {
+            SL_EnemyManager.Instance.RegisterEnemy();
+        }
     }
 
 
@@ -27,6 +32,15 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
     {
         //MoveEnemy();
     }
+
+    private void OnDestroy()
+    {
+        if (SL_EnemyManager.Instance != null)
+        {
+            SL_EnemyManager.Instance.UnregisterEnemy();
+        }
+    }
+
     public void MoveEnemy()
     {
         // if (gameObject.name == "CircleEnemy")
@@ -72,4 +86,5 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
         }
 
     }
+
 }

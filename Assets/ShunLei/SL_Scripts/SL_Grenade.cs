@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Collections;
 
 public class SL_Grenade : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class SL_Grenade : MonoBehaviour
             audioSource.Play();  // Play the AudioSource when collision occurs
             while (audioSource.isPlaying)
             {
-                Debug.Log("Is Playing: " + audioSource.isPlaying);
+                //Debug.Log("Is Playing: " + audioSource.isPlaying);
                 yield return null;
             }
         }
@@ -74,6 +75,7 @@ public class SL_Grenade : MonoBehaviour
 
         foreach (Collider nearbyObject in colliders)
         {
+            //Debug.Log("Near object name" + nearbyObject.name);
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
