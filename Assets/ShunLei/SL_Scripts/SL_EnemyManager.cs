@@ -35,6 +35,8 @@ public class SL_EnemyManager : MonoBehaviour
     {
         gameOverText.SetActive(false);  // Hide at the start
         winGameText.SetActive(false);
+        gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
     }
 
     void Update()
@@ -52,9 +54,9 @@ public class SL_EnemyManager : MonoBehaviour
             // Check if time is up
             if (gameTime <= 0)
             {
-                GameOver();
+                
                 isGameEnd = true;
-
+                GameOver();
                 // Show the mouse cursor
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None; // Allow the cursor to move freely
@@ -77,10 +79,9 @@ public class SL_EnemyManager : MonoBehaviour
     public void UnregisterEnemy()
     {
         enemyCount--;
-        if (enemyCount <= 0)
+        if (enemyCount <= 0 && !isGameEnd)
         {
             Debug.Log("All enemies are destroyed.");
-
             isGameEnd = true;
             Victory();
 
