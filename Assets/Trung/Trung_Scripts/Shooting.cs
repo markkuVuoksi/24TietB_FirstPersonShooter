@@ -8,12 +8,24 @@ public class Shooting : MonoBehaviour
     public Camera fpsCamera;
     public LayerMask shootingLayer;
     public GameObject laserTrailPrefab; // Prefab chứa Trail Renderer
+    public AudioClip laserSoundClip;
+    public AudioClip musicBackground;
+    AudioSource audiosource;
+   
 
+    private void Start()
+    {
+        audiosource = GetComponent<AudioSource>();
+        audiosource.clip = musicBackground;
+        audiosource.loop = true;
+        audiosource.Play();
+    }
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
+            audiosource.PlayOneShot(laserSoundClip);
         }
     }
 
