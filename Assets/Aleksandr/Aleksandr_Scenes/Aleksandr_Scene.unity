@@ -368,8 +368,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694755058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.949, y: 0.868, z: 0.19214167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.949001, y: 0.868, z: 0.19214058}
   m_LocalScale: {x: 1, y: 1.7228703, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -809,7 +809,7 @@ MonoBehaviour:
   grenadePrefab: {fileID: 2824868129509650895, guid: e00771e17343d574594887250914d98e, type: 3}
   playerCamera: {fileID: 1431726448}
   throwForce: 10
-  grenadeDamage: 50
+  throwCooldown: 2
 --- !u!1 &1482677242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,6 +1069,6 @@ SceneRoots:
   - {fileID: 1331576124}
   - {fileID: 782092929}
   - {fileID: 1905395867}
-  - {fileID: 694755063}
   - {fileID: 1395885372}
   - {fileID: 596242763}
+  - {fileID: 694755063}
