@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f;
@@ -14,7 +15,9 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     private Vector3 velocity;
     private bool isGrounded;
-    private float gravity = -9.81f; 
+    private float gravity = -9.81f;
+
+  
 
     private void Start()
     {

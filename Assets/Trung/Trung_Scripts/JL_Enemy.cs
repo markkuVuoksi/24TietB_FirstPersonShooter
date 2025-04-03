@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class JL_Enemy : MonoBehaviour, IDamageable
 {
@@ -7,11 +9,19 @@ public class JL_Enemy : MonoBehaviour, IDamageable
     private Transform target;
     private float yMin = -1f; // Nếu rơi dưới yMin, enemy sẽ chết ngay
     private EnemySpawner spawner;
+    KillCount KillCount;
+    public AudioClip deathSound;
+    AudioSource enmyAudio;
+
 
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player")?.transform;
         spawner = FindObjectOfType<EnemySpawner>();
+        KillCount = GameObject.Find("Print Kill Count").GetComponent<KillCount>();
+        enmyAudio = GetComponent<AudioSource>();
+
+
     }
 
     private void Update()
@@ -22,6 +32,9 @@ public class JL_Enemy : MonoBehaviour, IDamageable
         if (transform.position.y < yMin)
         {
             Die();
+            enmyAudio.PlayOneShot(deathSound);
+            KillCount.IncrementKillCount();
+
         }
     }
 
@@ -42,6 +55,8 @@ public class JL_Enemy : MonoBehaviour, IDamageable
         if (health <= 0)
         {
             Die();
+            KillCount.IncrementKillCount();
+            enmyAudio.PlayOneShot(deathSound);
         }
     }
 
@@ -50,9 +65,12 @@ public class JL_Enemy : MonoBehaviour, IDamageable
         if (spawner != null)
         {
             spawner.EnemyDied(); // Gọi Spawner để báo enemy đã chết
+
         }
 
         Destroy(gameObject);
         Debug.Log("Enemy died");
     }
 }
+
+
