@@ -23,12 +23,17 @@ public class SL_PlayerShooting : MonoBehaviour
     public ParticleSystem explosionParticle;
 
     public AudioSource audioSoruce;
+    public SL_EnemyManager sL_EnemyManager;
+
+    void Start()
+    {
+        sL_EnemyManager = GameObject.Find("EnemyManager").GetComponent<SL_EnemyManager>();
+    }
 
     void Update()
 
     {
-
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !sL_EnemyManager.isGameEnd)
 
         {
             //Show particle effect when an object is hit
@@ -36,10 +41,11 @@ public class SL_PlayerShooting : MonoBehaviour
 
             //Play shooting sound
             audioSoruce.Play();
-            
+
             Shoot();
 
         }
+
 
     }
 

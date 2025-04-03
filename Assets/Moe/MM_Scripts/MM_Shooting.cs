@@ -20,6 +20,14 @@ public class MM_Shooting : MonoBehaviour
 
     public LayerMask shootingLayer;
 
+    public ParticleSystem gunFlash;
+    public MM_AudioManager audioManager;
+
+    void Start()
+    {
+        audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
+    }
+
     void Update()
 
     {
@@ -29,8 +37,10 @@ public class MM_Shooting : MonoBehaviour
         {
 
             Shoot();
+            Animation();
+            audioManager.PlayGunSound();
 
-            Debug.Log("Shoot ");
+            Debug.Log("Shoot");
 
         }
 
@@ -39,6 +49,7 @@ public class MM_Shooting : MonoBehaviour
     void Shoot()
 
     {
+        
 
         RaycastHit hit;
 
@@ -53,7 +64,6 @@ public class MM_Shooting : MonoBehaviour
             // check if the object is hittable
 
             IDamageableMM damageable = hit.transform.GetComponent<IDamageableMM>();
-            Debug.Log("Enemy health is: ");
 
             if (damageable != null)
 
@@ -65,5 +75,15 @@ public class MM_Shooting : MonoBehaviour
 
         }
 
+        
+
+    }
+    void Animation()
+    {
+        if (gunFlash != null)
+        {
+            Debug.Log("Animation Triggered");
+            gunFlash.Play();
+        }
     }
 }
