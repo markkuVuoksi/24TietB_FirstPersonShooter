@@ -23,6 +23,7 @@ public class MM_Shooting : MonoBehaviour
     public ParticleSystem gunFlash;
     public MM_AudioManager audioManager;
 
+
     void Start()
     {
         audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
@@ -37,7 +38,7 @@ public class MM_Shooting : MonoBehaviour
         {
 
             Shoot();
-            Animation();
+            ShootAnimation();
             audioManager.PlayGunSound();
 
             Debug.Log("Shoot");
@@ -78,7 +79,7 @@ public class MM_Shooting : MonoBehaviour
         
 
     }
-    void Animation()
+    void ShootAnimation()
     {
         if (gunFlash != null)
         {
@@ -86,4 +87,6 @@ public class MM_Shooting : MonoBehaviour
             gunFlash.Play();
         }
     }
+
+  
 }

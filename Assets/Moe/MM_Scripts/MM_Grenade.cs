@@ -15,6 +15,9 @@ public class MM_Grenade : MonoBehaviour
 
     public LayerMask damageableLayer;
 
+    public ParticleSystem bombExplode;
+
+
 
 
     private bool hasExploded = false;
@@ -68,7 +71,7 @@ public class MM_Grenade : MonoBehaviour
 
             }
 
-
+            BombAnimation();
 
             IDamageableMM damageable = nearbyObject.GetComponent<IDamageableMM>();
 
@@ -82,12 +85,22 @@ public class MM_Grenade : MonoBehaviour
 
         }
 
-
+        
 
         hasExploded = true;
 
         Destroy(gameObject);
 
+    }
+
+    
+    void BombAnimation()
+    {
+        if (bombExplode != null)
+        {
+            Debug.Log("Bomb has exploded");
+            bombExplode.Play();
+        }
     }
     // Update is called once per frame
     void Update()
