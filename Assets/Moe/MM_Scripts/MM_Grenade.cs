@@ -18,7 +18,7 @@ public class MM_Grenade : MonoBehaviour
     public ParticleSystem bombExplode;
 
 
-
+    public MM_AudioManager audioManager;
 
     private bool hasExploded = false;
 
@@ -28,6 +28,7 @@ public class MM_Grenade : MonoBehaviour
     void Start()
 
     {
+        audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
 
         StartCoroutine(ExplodeAfterDelay());
 
@@ -71,8 +72,6 @@ public class MM_Grenade : MonoBehaviour
 
             }
 
-            BombAnimation();
-
             IDamageableMM damageable = nearbyObject.GetComponent<IDamageableMM>();
 
             if (damageable != null)
@@ -84,8 +83,11 @@ public class MM_Grenade : MonoBehaviour
             }
 
         }
+        BombAnimation();
+        Debug.Log("Explode");
 
-        
+        audioManager.GrenadeExplowSound();
+
 
         hasExploded = true;
 
@@ -99,7 +101,11 @@ public class MM_Grenade : MonoBehaviour
         if (bombExplode != null)
         {
             Debug.Log("Bomb has exploded");
+
+            bombExplode.transform.parent = null;
+            bombExplode.transform.position = transform.position;
             bombExplode.Play();
+            Destroy(bombExplode.gameObject, bombExplode.main.duration);
         }
     }
     // Update is called once per frame
