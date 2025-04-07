@@ -90,6 +90,7 @@ MonoBehaviour:
   damageableLayer:
     serializedVersion: 2
     m_Bits: 64
+  explosionSound: {fileID: 8300000, guid: 7d130e28595b34842ba4bb3ddcda597f, type: 3}
 --- !u!54 &7410544883729855936
 Rigidbody:
   m_ObjectHideFlags: 0
