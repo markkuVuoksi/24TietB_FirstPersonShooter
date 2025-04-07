@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,12 +16,15 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private float gravity = -9.81f;
+    public AudioClip die;
+    AudioSource audioSource;
 
   
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
 
         cameraTransform = Camera.main.transform;
 
@@ -39,6 +42,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+        if (gameObject.transform.position.y < -3)
+        {
+            Debug.Log("game over");
+            audioSource.Play();
+            SceneManager.LoadScene("Trung_Scence");
+        }
     }
 
     private void MovePlayer()
@@ -74,6 +83,16 @@ public class PlayerController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("game over");
+            audioSource.Play();
+            SceneManager.LoadScene("Trung_Scence");
+        }
     }
 
 }

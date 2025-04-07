@@ -8,6 +8,9 @@ public class GrenadeThrower : MonoBehaviour
     public float throwForce = 10f;
     public AudioClip destroySound; // Âm thanh khi lựu đạn bị phá hủy
     public GameObject explosionEffect; // Prefab của hiệu ứng nổ
+    public float explosionDamage = 50f; // Sát thương của lựu đạn
+    public float explosionRadius = 5f; // Bán kính nổ
+    public LayerMask explosionLayer; // Lớp đối tượng bị ảnh hưởng bởi nổ (kẻ thù, các đối tượng có thể bị hư hại)
 
     private void Awake()
     {
@@ -72,6 +75,18 @@ public class GrenadeThrower : MonoBehaviour
             else
             {
                 Debug.LogWarning("Destroy sound is null.");
+            }
+
+            // Gây sát thương cho các đối tượng trong bán kính nổ
+            Collider[] hitColliders = Physics.OverlapSphere(grenade.transform.position, explosionRadius, explosionLayer);
+            foreach (Collider hitCollider in hitColliders)
+            {
+                IDamageable damageable = hitCollider.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    damageable.TakeDamage(explosionDamage);
+                    Debug.Log("Damage dealt to: " + hitCollider.name);
+                }
             }
 
             // Hủy lựu đạn sau khi nổ
