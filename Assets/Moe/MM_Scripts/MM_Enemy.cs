@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MM_Enemy : MonoBehaviour, IDamageableMM
 {
@@ -10,6 +11,7 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     private float speed = 50f;
     private Rigidbody rb;
 
+    public Image healthBar;
 
     // Define the boundaries (min and max values for each axis)
     private float minX = -20f, maxX = 20f;
@@ -30,6 +32,8 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     {
 
         health -= damageAmount;
+
+        healthBar.fillAmount = health / 100f;
 
         Debug.Log("Enemy health is: " + health);
 
