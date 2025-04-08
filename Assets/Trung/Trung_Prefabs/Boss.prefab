@@ -169,8 +169,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5220851, y: 1.8489218, z: 0.29216778}
+  m_Center: {x: -0.03161496, y: 0.89349484, z: -0.018305242}
 --- !u!114 &8865683876384009956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
-  speed: 6
+  speed: 2.2
   deathSound: {fileID: 8300000, guid: 3c693ff13f396a246a548ff39fe2cbe9, type: 3}
 --- !u!1 &463716795401530864
 GameObject:

@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  speed: 3
+  speed: 1.5
   deathSound: {fileID: 8300000, guid: 3c693ff13f396a246a548ff39fe2cbe9, type: 3}
 --- !u!1 &3327897040753952619
 GameObject:
