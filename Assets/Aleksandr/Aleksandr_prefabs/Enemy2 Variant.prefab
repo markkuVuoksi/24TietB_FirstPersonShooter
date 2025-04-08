@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: health
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 9019353324431347433, guid: 3df8aa6a94b651345a48670a22ad70fa, type: 3}
+      propertyPath: hitEffectPrefab
+      value: 
+      objectReference: {fileID: 222090350761386836, guid: e136d99821c31d048a0c45c6edf39fc4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
