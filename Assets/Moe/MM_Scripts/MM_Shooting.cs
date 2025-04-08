@@ -23,7 +23,7 @@ public class MM_Shooting : MonoBehaviour
 
     //variable for waiting to shoot
     public bool canShoot = false;
-    public float waitToShoot = 1.5f;
+    public float waitToShoot = 2f;
 
     public ParticleSystem gunFlash;
     public MM_AudioManager audioManager;

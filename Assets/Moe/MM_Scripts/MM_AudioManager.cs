@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
 public class MM_AudioManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip shootingSound;
     public AudioClip bombingSound;
+    public AudioClip loadingSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,10 +19,19 @@ public class MM_AudioManager : MonoBehaviour
     }
     public void PlayGunSound()
     {
-        if (audioSource && shootingSound)
+        if (audioSource && shootingSound && loadingSound)
         {
-            audioSource.PlayOneShot(shootingSound);
+            StartCoroutine(PlayLoadingAfterGun());
         }
+    }
+
+    private IEnumerator PlayLoadingAfterGun()
+    {
+        audioSource.PlayOneShot(shootingSound);
+
+        yield return new WaitForSeconds(1);
+
+        audioSource.PlayOneShot(loadingSound);
     }
     
     public void PlayBombSound()
