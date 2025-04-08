@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 // here we make the interface now
 
@@ -20,12 +21,17 @@ public class MM_Shooting : MonoBehaviour
 
     public LayerMask shootingLayer;
 
+    //variable for waiting to shoot
+    public bool canShoot = false;
+    public float waitToShoot = 1.5f;
+
     public ParticleSystem gunFlash;
     public MM_AudioManager audioManager;
 
 
     void Start()
     {
+        canShoot = true;
         audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
     }
 
@@ -33,7 +39,7 @@ public class MM_Shooting : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot)
 
         {
 
@@ -50,7 +56,7 @@ public class MM_Shooting : MonoBehaviour
     void Shoot()
 
     {
-        
+        canShoot = false;
 
         RaycastHit hit;
 
@@ -75,9 +81,16 @@ public class MM_Shooting : MonoBehaviour
             }
 
         }
+        StartCoroutine(WaitToShoot());
 
         
 
+    }
+
+    IEnumerator WaitToShoot()
+    {
+        yield return new WaitForSeconds(waitToShoot);
+        canShoot = true;
     }
     void ShootAnimation()
     {

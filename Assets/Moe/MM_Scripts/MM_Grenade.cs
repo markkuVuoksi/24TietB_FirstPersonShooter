@@ -43,6 +43,7 @@ public class MM_Grenade : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         Explode();
+        audioManager.PlayBombSound();
 
     }
 
@@ -85,8 +86,6 @@ public class MM_Grenade : MonoBehaviour
         }
         BombAnimation();
         Debug.Log("Explode");
-
-        audioManager.GrenadeExplowSound();
 
 
         hasExploded = true;

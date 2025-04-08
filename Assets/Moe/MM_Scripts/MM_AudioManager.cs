@@ -3,7 +3,8 @@ using UnityEngine;
 public class MM_AudioManager : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip audioClip;
+    public AudioClip shootingSound;
+    public AudioClip bombingSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,17 +17,17 @@ public class MM_AudioManager : MonoBehaviour
     }
     public void PlayGunSound()
     {
-        if (audioSource && audioClip)
+        if (audioSource && shootingSound)
         {
-            audioSource.PlayOneShot(audioClip);
+            audioSource.PlayOneShot(shootingSound);
         }
     }
-
-    public void GrenadeExplowSound()
+    
+    public void PlayBombSound()
     {
-        if (audioSource && audioClip)
+        if(audioSource && bombingSound)
         {
-            audioSource.PlayOneShot(audioClip);
+            audioSource.PlayOneShot(bombingSound);
         }
     }
 
