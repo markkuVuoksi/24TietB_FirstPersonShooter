@@ -11,6 +11,7 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     private float speed = 50f;
     private Rigidbody rb;
 
+    public Image healthBoarder;
     public Image healthBar;
 
     // Define the boundaries (min and max values for each axis)
@@ -62,6 +63,19 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     
     void Move()
     {
+        if (healthBar != null && healthBoarder)
+        {
+            Vector3 euler = healthBar.transform.rotation.eulerAngles;
+            euler.z = 0f;// Lock Z rotation
+            euler.x = 0f;// Lock X rotation
+
+            Vector3 hbeuler = healthBoarder.transform.eulerAngles;
+            hbeuler.z = 0f;
+            hbeuler.x = 0f;
+
+            healthBoarder.transform.rotation = Quaternion.Euler(hbeuler);
+            healthBar.transform.rotation = Quaternion.Euler(euler);
+        }
         rb.MovePosition(transform.position+direction * speed * Time.deltaTime);
         RestrictOutOfBound();
     }
