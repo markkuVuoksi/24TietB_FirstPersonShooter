@@ -927,9 +927,17 @@ PrefabInstance:
       propertyPath: die
       value: 
       objectReference: {fileID: 8300000, guid: b4a95a658cceacb4ca0e9b6cf3167d7a, type: 3}
+    - target: {fileID: 4495108829349547172, guid: cd117b042f984334a892f8d0043c1ace, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5358753743808789507, guid: cd117b042f984334a892f8d0043c1ace, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191908922267308017, guid: cd117b042f984334a892f8d0043c1ace, type: 3}
+      propertyPath: damage
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
