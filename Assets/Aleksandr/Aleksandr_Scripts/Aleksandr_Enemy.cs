@@ -14,6 +14,12 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
     {
         agent = GetComponent<NavMeshAgent>();
         moveTimer = moveInterval;
+
+        // Убедитесь, что есть коллайдер (например, BoxCollider)
+        if (GetComponent<Collider>() == null)
+        {
+            gameObject.AddComponent<BoxCollider>();
+        }
     }
 
     void Update()

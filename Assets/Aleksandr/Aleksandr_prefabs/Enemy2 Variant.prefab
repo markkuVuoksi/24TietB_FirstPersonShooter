@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7bcfde7da21d347488284466641837c1, type: 2}
+    - target: {fileID: 4627697380601250427, guid: 3df8aa6a94b651345a48670a22ad70fa, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8171860503906381148, guid: 3df8aa6a94b651345a48670a22ad70fa, type: 3}
       propertyPath: m_Name
       value: Enemy2 Variant
@@ -71,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8171860503906381148, guid: 3df8aa6a94b651345a48670a22ad70fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5660523964767084263}
+    - targetCorrespondingSourceObject: {fileID: 8171860503906381148, guid: 3df8aa6a94b651345a48670a22ad70fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3506141183125559759}
   m_SourcePrefab: {fileID: 100100000, guid: 3df8aa6a94b651345a48670a22ad70fa, type: 3}
 --- !u!1 &1492889627155970386 stripped
 GameObject:
@@ -99,3 +106,16 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3506141183125559759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492889627155970386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2338b6faacc9c184f9deba3b5ae4bb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: 1
