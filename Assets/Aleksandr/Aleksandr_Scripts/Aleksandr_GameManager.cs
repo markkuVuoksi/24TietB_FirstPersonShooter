@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Aleksandr_GameManager : MonoBehaviour
 {
     public float timeLimit = 120f;
     public int killTarget = 5;
     public int enemiesKilled = 0;
+    public float restartDelay = 5f; // время до рестарта
 
     private float timer;
     private bool gameEnded = false;
@@ -43,11 +46,20 @@ public class Aleksandr_GameManager : MonoBehaviour
     {
         gameEnded = true;
         Debug.Log("🎉 VICTORY! Target reached!");
+        StartCoroutine(RestartAfterDelay());
     }
 
     void Lose()
     {
         gameEnded = true;
         Debug.Log("💀 DEFEAT! Time's up.");
+        StartCoroutine(RestartAfterDelay());
+    }
+
+    IEnumerator RestartAfterDelay()
+    {
+        Debug.Log($"🔄 Restarting in {restartDelay} seconds...");
+        yield return new WaitForSeconds(restartDelay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
