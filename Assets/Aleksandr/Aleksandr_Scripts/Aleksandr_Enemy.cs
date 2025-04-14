@@ -14,6 +14,12 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
     {
         agent = GetComponent<NavMeshAgent>();
         moveTimer = moveInterval;
+
+        // Убедитесь, что есть коллайдер (например, BoxCollider)
+        if (GetComponent<Collider>() == null)
+        {
+            gameObject.AddComponent<BoxCollider>();
+        }
     }
 
     void Update()
@@ -29,7 +35,6 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
 
     void MoveToRandomPosition()
     {
-        // Случайное направление от текущей позиции
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
         randomDirection += transform.position;
 
@@ -47,6 +52,13 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
 
         if (health <= 0)
         {
+            // Уведомляем GameManager об убийстве
+            Aleksandr_GameManager gameManager = FindAnyObjectByType<Aleksandr_GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.AddKill();
+            }
+
             Destroy(gameObject);
         }
     }

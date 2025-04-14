@@ -12,7 +12,8 @@ public class Aleksandr_EnemySpawner : MonoBehaviour
     public EnemyVariant[] enemyVariants;
     public Transform[] spawnPoints;
     public float spawnInterval = 3f;
-
+    public int maxEnemies = 5;  // Максимальное количество врагов
+    private int currentEnemyCount = 0;  // Текущее количество врагов
     private float timer = 0f;
 
     void Update()
@@ -21,8 +22,12 @@ public class Aleksandr_EnemySpawner : MonoBehaviour
 
         if (timer >= spawnInterval)
         {
-            SpawnEnemy();
-            timer = 0f;
+            // Спавним врага, если текущее количество меньше максимального
+            if (currentEnemyCount < maxEnemies)
+            {
+                SpawnEnemy();
+                timer = 0f;
+            }
         }
     }
 
@@ -36,7 +41,11 @@ public class Aleksandr_EnemySpawner : MonoBehaviour
         // Выбираем тип врага на основе вероятности
         GameObject selectedEnemy = ChooseRandomEnemy();
 
+        // Создаем врага
         Instantiate(selectedEnemy, spawnPoint.position, Quaternion.identity);
+
+        // Увеличиваем счётчик врагов
+        currentEnemyCount++;
     }
 
     GameObject ChooseRandomEnemy()
@@ -55,5 +64,12 @@ public class Aleksandr_EnemySpawner : MonoBehaviour
         }
 
         return enemyVariants[0].prefab; // запасной вариант
+    }
+
+    // Метод для вызова, когда враг уничтожен
+    public void OnEnemyDestroyed()
+    {
+        // Уменьшаем количество активных врагов
+        currentEnemyCount--;
     }
 }
