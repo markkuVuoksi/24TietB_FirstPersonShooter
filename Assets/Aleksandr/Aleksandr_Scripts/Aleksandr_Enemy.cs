@@ -52,16 +52,11 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
 
         if (health <= 0)
         {
-            // Уведомить GameManager об убийстве
+            // Уведомляем GameManager об убийстве
             Aleksandr_GameManager gameManager = FindAnyObjectByType<Aleksandr_GameManager>();
             if (gameManager != null)
             {
                 gameManager.AddKill();
-                Debug.Log("Враг уничтожен. AddKill вызван.");
-            }
-            else
-            {
-                Debug.LogWarning("GameManager не найден!");
             }
 
             Destroy(gameObject);
