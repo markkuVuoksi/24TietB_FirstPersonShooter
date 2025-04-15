@@ -4,20 +4,21 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
+  - GunShoot
+  - GrenadeShoot
   - Enemy
   - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - ground
   - Water
   - UI
-  - Enemy
-  - 
-  - 
-  - 
+  - enemy
+  - GunShootEnemy
+  - GrenadeShootEnemy
+  - OS_Enemy
   - 
   - 
   - 

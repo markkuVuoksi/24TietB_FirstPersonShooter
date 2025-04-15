@@ -8,7 +8,7 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
 
     public float rollSpeed = 200f;    // Rolling speed
     private Vector3 startPosition;
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
     public ParticleSystem explosionParticle;
 
@@ -17,16 +17,30 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
     void Start()
     {
         startPosition = transform.position;
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<SL_HealthBar>();
         healthBar.UpdateHealthBar(health, maxHealth);
+
+        if (SL_EnemyManager.Instance != null)
+        {
+            SL_EnemyManager.Instance.RegisterEnemy();
+        }
     }
 
 
     void Update()
     {
-        MoveEnemy();
+        //MoveEnemy();
     }
+
+    private void OnDestroy()
+    {
+        if (SL_EnemyManager.Instance != null)
+        {
+            SL_EnemyManager.Instance.UnregisterEnemy();
+        }
+    }
+
     public void MoveEnemy()
     {
         // if (gameObject.name == "CircleEnemy")
@@ -72,4 +86,5 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
         }
 
     }
+
 }
