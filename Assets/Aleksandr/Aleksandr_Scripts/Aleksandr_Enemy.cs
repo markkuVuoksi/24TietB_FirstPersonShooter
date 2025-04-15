@@ -7,19 +7,30 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
 
     private NavMeshAgent agent;
     private float moveTimer;
-    public float moveInterval = 3f;       // Интервал между сменой цели
-    public float wanderRadius = 10f;      // Радиус случайного движения
+    public float moveInterval = 3f;
+    public float wanderRadius = 10f;
+
+    public AudioClip hitSound; // 🎵 СЮДА КЛИП
+    private AudioSource audioSource;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         moveTimer = moveInterval;
 
-        // Убедитесь, что есть коллайдер (например, BoxCollider)
+        // Убедитесь, что есть коллайдер
         if (GetComponent<Collider>() == null)
         {
             gameObject.AddComponent<BoxCollider>();
         }
+
+        // Настраиваем аудио
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.playOnAwake = false;
     }
 
     void Update()
@@ -38,8 +49,7 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
         randomDirection += transform.position;
 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomDirection, out hit, 2f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, 2f, NavMesh.AllAreas))
         {
             agent.SetDestination(hit.position);
         }
@@ -48,11 +58,17 @@ public class Aleksandr_Enemy : MonoBehaviour, IDamageableAM
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
+
+        // 🎧 Играем звук урона
+        if (hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
+
         Debug.Log("Enemy health is: " + health);
 
         if (health <= 0)
         {
-            // Уведомляем GameManager об убийстве
             Aleksandr_GameManager gameManager = FindAnyObjectByType<Aleksandr_GameManager>();
             if (gameManager != null)
             {
