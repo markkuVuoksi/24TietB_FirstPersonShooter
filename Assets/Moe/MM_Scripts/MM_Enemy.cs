@@ -7,12 +7,17 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private float health;
+    private float maxHealth;
     private Vector3 direction;
     private float speed = 50f;
     private Rigidbody rb;
 
+
     public Image healthBoarder;
     public Image healthBar;
+    private Camera _cam;
+    public ParticleSystem getShot;
+    //public ParticleSystem deathAni;
 
     // Define the boundaries (min and max values for each axis)
     private float minX = -20f, maxX = 20f;
@@ -20,6 +25,8 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     private float minZ = -40f, maxZ = 0f;
     void Start()
     {
+        _cam = Camera.main;
+        health = maxHealth;
         rb = GetComponent<Rigidbody>();
         RandomizeHealth();
 
@@ -33,8 +40,9 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     {
 
         health -= damageAmount;
+        GetShotAnimation();
 
-        healthBar.fillAmount = health / 100f;
+        healthBar.fillAmount = health / maxHealth;
 
         Debug.Log("Enemy health is: " + health);
 
@@ -95,10 +103,22 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     void RandomizeHealth()
     {
         health = Random.Range(80f, 140f);
+        maxHealth = health;
+    }
+
+    void GetShotAnimation()
+    {
+        if(getShot != null)
+        {
+            Debug.Log("getshot animatoion played");
+            getShot.Play();
+        }
     }
     // Update is called once per frame
     void Update()
     {
         Move();
+        healthBoarder.transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position);
+        healthBar.transform.rotation = healthBoarder.transform.rotation;
     }
 }
