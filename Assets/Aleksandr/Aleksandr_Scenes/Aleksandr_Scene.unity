@@ -4189,6 +4189,7 @@ MonoBehaviour:
   timeLimit: 120
   killTarget: 5
   enemiesKilled: 0
+  restartDelay: 5
 --- !u!4 &1575786665
 Transform:
   m_ObjectHideFlags: 0
