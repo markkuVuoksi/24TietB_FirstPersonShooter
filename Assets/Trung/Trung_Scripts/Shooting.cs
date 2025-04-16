@@ -11,7 +11,9 @@ public class Shooting : MonoBehaviour
     public AudioClip laserSoundClip;
     public AudioClip musicBackground;
     private AudioSource audiosource;
-    private bool isPaused = false;  // Biến trạng thái pause
+
+    private float nextTimeToShoot = 0f; // Thời điểm được bắn tiếp theo
+    private float shootCooldown = 0.5f; // Khoảng thời gian giữa các phát bắn
 
     private void Start()
     {
@@ -23,11 +25,12 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        // Kiểm tra nếu game đang bị pause (Time.timeScale == 0)
-        if (Time.timeScale == 0f) return;  // Nếu game tạm dừng thì không xử lý việc bắn
+        // Không xử lý nếu đang tạm dừng
+        if (Time.timeScale == 0f) return;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToShoot)
         {
+            nextTimeToShoot = Time.time + shootCooldown;
             Shoot();
             audiosource.PlayOneShot(laserSoundClip);
         }
@@ -41,19 +44,16 @@ public class Shooting : MonoBehaviour
 
         if (Physics.Raycast(shootOrigin, shootDirection, out hit, range, shootingLayer))
         {
-            // Gây sát thương cho kẻ địch
             IDamageable damageable = hit.transform.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.TakeDamage(damage);
             }
 
-            // Tạo vệt laser từ súng đến vị trí trúng
             SpawnLaserTrail(shootOrigin, hit.point);
         }
         else
         {
-            // Nếu không trúng, bắn laser đến khoảng cách tối đa
             SpawnLaserTrail(shootOrigin, shootOrigin + shootDirection * range);
         }
     }
@@ -72,12 +72,10 @@ public class Shooting : MonoBehaviour
 
     void ConfigureTrail(TrailRenderer trail)
     {
-        // Thiết lập thông số Trail Renderer
         trail.startWidth = 0.2f;
         trail.endWidth = 0f;
-        trail.time = Random.Range(0.2f, 0.5f); // Ngẫu nhiên trong khoảng 0.2 - 0.5 giây
+        trail.time = Random.Range(0.2f, 0.5f);
 
-        // Đặt màu sáng (đỏ - xanh) bằng Color Gradient
         Gradient gradient = new Gradient();
         gradient.SetKeys(
             new GradientColorKey[] {
@@ -95,7 +93,7 @@ public class Shooting : MonoBehaviour
 
     IEnumerator MoveTrail(TrailRenderer trail, Vector3 start, Vector3 end)
     {
-        float duration = 0.05f; // Thời gian di chuyển
+        float duration = 0.05f;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
@@ -106,6 +104,6 @@ public class Shooting : MonoBehaviour
         }
 
         trail.transform.position = end;
-        Destroy(trail.gameObject, trail.time); // Xóa sau khi trail hoàn tất
+        Destroy(trail.gameObject, trail.time);
     }
 }

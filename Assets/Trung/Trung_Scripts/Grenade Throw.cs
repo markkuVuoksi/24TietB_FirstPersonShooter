@@ -6,11 +6,14 @@ public class GrenadeThrower : MonoBehaviour
     public GameObject grenadePrefab;
     public Camera playerCamera;
     public float throwForce = 10f;
-    public AudioClip destroySound; // Âm thanh khi lựu đạn bị phá hủy
-    public GameObject explosionEffect; // Prefab của hiệu ứng nổ
-    public float explosionDamage = 50f; // Sát thương của lựu đạn
-    public float explosionRadius = 5f; // Bán kính nổ
-    public LayerMask explosionLayer; // Lớp đối tượng bị ảnh hưởng bởi nổ (kẻ thù, các đối tượng có thể bị hư hại)
+    public AudioClip destroySound;
+    public GameObject explosionEffect;
+    public float explosionDamage = 50f;
+    public float explosionRadius = 5f;
+    public LayerMask explosionLayer;
+
+    private float nextTimeToThrow = 0f; // Thời điểm được ném tiếp theo
+    private float throwCooldown = 5f;   // Thời gian chờ giữa 2 lần ném
 
     private void Awake()
     {
@@ -22,15 +25,15 @@ public class GrenadeThrower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && Time.time >= nextTimeToThrow)
         {
+            nextTimeToThrow = Time.time + throwCooldown;
             ThrowGrenade();
         }
     }
 
     void ThrowGrenade()
     {
-        // Tạo lựu đạn
         Vector3 spawnPosition = playerCamera.transform.position + playerCamera.transform.forward * 1.5f;
         GameObject grenade = Instantiate(grenadePrefab, spawnPosition, Quaternion.identity);
 
@@ -40,44 +43,29 @@ public class GrenadeThrower : MonoBehaviour
             rb.AddForce(playerCamera.transform.forward * throwForce, ForceMode.VelocityChange);
         }
 
-        // Sau khi lựu đạn bị hủy, tạo hiệu ứng nổ và âm thanh
         StartCoroutine(PlayExplosion(grenade));
     }
 
     private IEnumerator PlayExplosion(GameObject grenade)
     {
-        // Đợi một chút cho đến khi lựu đạn nổ
-        yield return new WaitForSeconds(3f); // Lựu đạn sẽ nổ sau 3 giây
+        yield return new WaitForSeconds(3f);
 
-        // Kiểm tra xem lựu đạn có còn tồn tại hay không
         if (grenade != null)
         {
-            // Debug kiểm tra vị trí nổ
             Debug.Log("Grenade exploded at position: " + grenade.transform.position);
 
-            // Hiệu ứng hình ảnh nổ
             if (explosionEffect != null)
             {
                 Instantiate(explosionEffect, grenade.transform.position, Quaternion.identity);
                 Debug.Log("Explosion effect instantiated.");
             }
-            else
-            {
-                Debug.LogWarning("Explosion effect is null.");
-            }
 
-            // Phát âm thanh
             if (destroySound != null)
             {
                 AudioSource.PlayClipAtPoint(destroySound, grenade.transform.position);
                 Debug.Log("Explosion sound played.");
             }
-            else
-            {
-                Debug.LogWarning("Destroy sound is null.");
-            }
 
-            // Gây sát thương cho các đối tượng trong bán kính nổ
             Collider[] hitColliders = Physics.OverlapSphere(grenade.transform.position, explosionRadius, explosionLayer);
             foreach (Collider hitCollider in hitColliders)
             {
@@ -89,12 +77,7 @@ public class GrenadeThrower : MonoBehaviour
                 }
             }
 
-            // Hủy lựu đạn sau khi nổ
             Destroy(grenade);
-        }
-        else
-        {
-            Debug.LogWarning("Grenade object is null when trying to play explosion.");
         }
     }
 }
