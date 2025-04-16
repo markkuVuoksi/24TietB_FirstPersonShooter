@@ -10,8 +10,8 @@ public class Shooting : MonoBehaviour
     public GameObject laserTrailPrefab; // Prefab chứa Trail Renderer
     public AudioClip laserSoundClip;
     public AudioClip musicBackground;
-    AudioSource audiosource;
-   
+    private AudioSource audiosource;
+    private bool isPaused = false;  // Biến trạng thái pause
 
     private void Start()
     {
@@ -20,8 +20,12 @@ public class Shooting : MonoBehaviour
         audiosource.loop = true;
         audiosource.Play();
     }
-    void Update()
+
+    private void Update()
     {
+        // Kiểm tra nếu game đang bị pause (Time.timeScale == 0)
+        if (Time.timeScale == 0f) return;  // Nếu game tạm dừng thì không xử lý việc bắn
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
