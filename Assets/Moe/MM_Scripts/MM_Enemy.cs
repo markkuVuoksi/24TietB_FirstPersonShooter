@@ -12,6 +12,7 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     private float speed = 50f;
     private Rigidbody rb;
 
+    public MM_Grenadier grenadier;
 
     public Image healthBoarder;
     public Image healthBar;
@@ -20,11 +21,12 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     //public ParticleSystem deathAni;
 
     // Define the boundaries (min and max values for each axis)
-    private float minX = -20f, maxX = 20f;
-    private float minY = -1f, maxY = 10f;
-    private float minZ = -40f, maxZ = 0f;
+    private float minX = -50f, maxX = 60f;
+    private float minY = -1f, maxY = 15f;
+    private float minZ = -50f, maxZ = 50f;
     void Start()
     {
+        grenadier = Object.FindAnyObjectByType<MM_Grenadier>();
         _cam = Camera.main;
         health = maxHealth;
         rb = GetComponent<Rigidbody>();
@@ -51,6 +53,7 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
         {
 
             Destroy(gameObject);
+            grenadier.health -= 25;
 
         }
 
@@ -118,6 +121,8 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     void Update()
     {
         Move();
+
+        //healthBar and camera have a Kdrama moment 
         healthBoarder.transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position);
         healthBar.transform.rotation = healthBoarder.transform.rotation;
     }
