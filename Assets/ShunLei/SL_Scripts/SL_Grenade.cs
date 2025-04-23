@@ -71,7 +71,7 @@ public class SL_Grenade : MonoBehaviour
 
         if (hasExploded) return;
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius,damageableLayer);
    
         foreach (Collider nearbyObject in colliders)
         {
