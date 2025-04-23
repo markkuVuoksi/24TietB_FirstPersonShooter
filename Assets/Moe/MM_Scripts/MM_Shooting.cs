@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 // here we make the interface now
 
@@ -16,6 +17,9 @@ public class MM_Shooting : MonoBehaviour
     public float range = 500.0f;
 
     public float damage = 25.0f;
+    public float load = 30.0f;
+
+    public TMP_Text bullet;
 
     public Camera fpsCamera;
 
@@ -39,18 +43,25 @@ public class MM_Shooting : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        if (Input.GetButtonDown("Fire1") && canShoot && load > 0)
 
         {
 
             Shoot();
+            load--;
             ShootAnimation();
             audioManager.PlayGunSound();
 
             Debug.Log("Shoot");
 
         }
+        UpdateBullet();
 
+    }
+    
+    void UpdateBullet()
+    {
+        bullet.text = "Bullet : " + load.ToString();
     }
 
     void Shoot()
