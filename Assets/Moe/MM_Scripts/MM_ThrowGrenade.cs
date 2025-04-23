@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class MM_ThrowGrenade : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class MM_ThrowGrenade : MonoBehaviour
 
     public Camera playerCamera;
 
+    public TMP_Text count;
+
     public float throwForce = 10f;
     public float throwCooldown = 3f;
+    public float grenadeCount = 3;
     public bool canThrow = false;
 
     
@@ -38,14 +42,19 @@ public class MM_ThrowGrenade : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && canThrow)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && canThrow && grenadeCount > 0)
 
         {
 
             ThrowGrenade();
+            grenadeCount--;
 
         }
-
+        UpdateGrenadeCount();
+    }
+    void UpdateGrenadeCount()
+    {
+        count.text = "Grenade : " + grenadeCount.ToString();
     }
 
 
