@@ -74,7 +74,7 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
         health -= damageAmount;
         healthBar.UpdateHealthBar(health, maxHealth);
 
-        Debug.Log("Enemy health is: " + health);
+        //Debug.Log("Enemy health is: " + health);
 
 
         if (health <= 0)
