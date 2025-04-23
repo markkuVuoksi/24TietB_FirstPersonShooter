@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 public class MM_Grenadier : MonoBehaviour
@@ -11,6 +12,10 @@ public class MM_Grenadier : MonoBehaviour
 
     public Transform Target;
     public float AttackDistance;
+    private float HealthReduction = 1f;
+
+    //to make that ReduceHealth() wont occur frame per second
+    private bool isAttacking = false;
 
     private UnityEngine.AI.NavMeshAgent m_Agent;
     private Animator m_Animator;
@@ -22,6 +27,7 @@ public class MM_Grenadier : MonoBehaviour
     void Start()
     {
         playerMovement = Object.FindAnyObjectByType<MM_PlayerMovement>();
+        _cam = Camera.main;
 
         m_Agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_Animator = GetComponent<Animator>();
@@ -38,7 +44,12 @@ public class MM_Grenadier : MonoBehaviour
         {
             m_Agent.isStopped = true;
             m_Animator.SetBool("Attack", true);
-            playerMovement.playerHealth -= Random.Range(10, 20);
+            Debug.Log("Is Attackingggggggggggggggggg");
+
+            if(!isAttacking)
+            {
+                StartCoroutine(ReduceHealth());
+            }
         }
         else if (m_Distance > AttackDistance ) 
         {
@@ -61,4 +72,18 @@ public class MM_Grenadier : MonoBehaviour
         //update the health bar
         healthBar.fillAmount = health / 100;
     }
+
+    IEnumerator ReduceHealth()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(HealthReduction);
+        if (playerMovement.playerHealth > 0)
+        {
+            playerMovement.playerHealth -= Random.Range(10, 20);
+        }
+        Debug.Log("Health is reduced to" + playerMovement.playerHealth);
+        yield return new WaitForSeconds(HealthReduction);
+        isAttacking = false;
+    }
+
 }
