@@ -19,6 +19,7 @@ public class MM_Grenade : MonoBehaviour
 
 
     public MM_AudioManager audioManager;
+    public MM_Grenadier hitGrenadier;
 
     private bool hasExploded = false;
 
@@ -81,6 +82,15 @@ public class MM_Grenade : MonoBehaviour
 
                 damageable.TakeDamage(damageAmount);
 
+            }
+
+            if(nearbyObject.CompareTag("Grenadier"))
+            {
+                MM_Grenadier hitGrenadier = nearbyObject.GetComponent<MM_Grenadier>();
+                if (hitGrenadier != null)
+                {
+                    hitGrenadier.GrenadierStopForASecond();
+                }
             }
 
         }

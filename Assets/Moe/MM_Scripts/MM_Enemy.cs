@@ -53,7 +53,7 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
         {
 
             Destroy(gameObject);
-            grenadier.health -= 25;
+            grenadier.health -= 100;
 
         }
 

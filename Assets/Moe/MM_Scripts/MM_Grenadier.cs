@@ -60,6 +60,8 @@ public class MM_Grenadier : MonoBehaviour
         //make health bar look at camera
         healthBoarder.transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position);
         healthBar.transform.rotation = healthBoarder.transform.rotation;
+
+        StartCoroutine(GrenadierDeath(6f));
     }
 
     private void OnAnimatorMove()
@@ -84,6 +86,39 @@ public class MM_Grenadier : MonoBehaviour
         Debug.Log("Health is reduced to" + playerMovement.playerHealth);
         yield return new WaitForSeconds(HealthReduction);
         isAttacking = false;
+    }
+
+    public void GrenadierStopForASecond()
+    {
+        Debug.Log("Grenadier has stopped");
+        StartCoroutine(StunGre(2f));
+    }
+
+    IEnumerator StunGre(float duration)
+    {
+        //Stun the enemy
+        m_Agent.isStopped = true;
+        m_Animator.SetBool("Stunned", true);
+        isAttacking = true;
+
+        yield return new WaitForSeconds(duration);
+
+        //Resume walking
+        m_Agent.isStopped = false;
+        isAttacking = false;
+        m_Animator.SetBool("Stunned", false);
+    }
+
+    IEnumerator GrenadierDeath(float duration)
+    {
+        if(health == 0)
+        {
+            m_Agent.isStopped = true;
+            m_Animator.SetBool("Die", true);
+            yield return new WaitForSeconds(duration);
+            Destroy(gameObject);
+        }
+        
     }
 
 }
