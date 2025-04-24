@@ -13,6 +13,7 @@ public class JL_Enemy : MonoBehaviour, IDamageable
     public AudioClip deathSound;
     AudioSource enmyAudio;
 
+    public GameObject deathVFXPrefab; // Reference to the death VFX prefab
 
     private void Start()
     {
@@ -20,8 +21,6 @@ public class JL_Enemy : MonoBehaviour, IDamageable
         spawner = FindObjectOfType<EnemySpawner>();
         KillCount = GameObject.Find("Print Kill Count").GetComponent<KillCount>();
         enmyAudio = GetComponent<AudioSource>();
-
-
     }
 
     private void Update()
@@ -34,7 +33,6 @@ public class JL_Enemy : MonoBehaviour, IDamageable
             Die();
             enmyAudio.PlayOneShot(deathSound);
             KillCount.IncrementKillCount();
-
         }
     }
 
@@ -62,15 +60,18 @@ public class JL_Enemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        // Play death VFX
+        if (deathVFXPrefab != null)
+        {
+            Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
+        }
+
         if (spawner != null)
         {
             spawner.EnemyDied(); // Gọi Spawner để báo enemy đã chết
-
         }
 
         Destroy(gameObject);
         Debug.Log("Enemy died");
     }
 }
-
-

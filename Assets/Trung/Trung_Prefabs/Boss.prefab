@@ -186,6 +186,7 @@ MonoBehaviour:
   health: 1000
   speed: 2.2
   deathSound: {fileID: 8300000, guid: 3c693ff13f396a246a548ff39fe2cbe9, type: 3}
+  deathVFXPrefab: {fileID: 7856939199014537196, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
 --- !u!1 &463716795401530864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,6 +1453,7 @@ SkinnedMeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
