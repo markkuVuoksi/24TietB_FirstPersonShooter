@@ -18,6 +18,7 @@ public class SL_EnemyManager : MonoBehaviour
     public GameObject gameOverText;
     public GameObject winGameText;
     public TextMeshProUGUI enemyCountText;
+    public GameObject deadText; // UI panel to show when the game is over
 
     private void Awake()
     {
@@ -100,6 +101,20 @@ public class SL_EnemyManager : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverText.SetActive(false);  // Show the UI
+            gameOverPanel.SetActive(true); // Show Game Over UI
+        }
+        //StartCoroutine(ShowGameOverPanel());
+
+    }
+
+    public async void GameOverDead()
+    {
+        //Time.timeScale = 0f; // Stops physics-based movement
+        deadText.SetActive(true);  // Show the UI
+        await Task.Delay(2000); // 3000ms = 3 seconds
+        if (gameOverPanel != null)
+        {
+            deadText.SetActive(false);  // Show the UI
             gameOverPanel.SetActive(true); // Show Game Over UI
         }
         //StartCoroutine(ShowGameOverPanel());

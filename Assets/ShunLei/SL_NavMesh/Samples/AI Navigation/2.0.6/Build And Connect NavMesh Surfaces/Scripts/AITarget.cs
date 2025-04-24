@@ -20,7 +20,7 @@ public class AITarget : MonoBehaviour
 
     void Update()
     {
-        m_Distance = Vector3.Distance(m_Agent.transform.position, Target.position);
+        m_Distance = Vector3.Distance(m_Agent.transform.position, Target.transform.position);
         if(m_Distance < AttackDistance)
         {
             m_Agent.isStopped = true;
@@ -30,7 +30,7 @@ public class AITarget : MonoBehaviour
         {
             m_Agent.isStopped = false;
             m_Animator.SetBool("Attack",false);
-            m_Agent.destination = Target.position;
+            m_Agent.destination = Target.transform.position;
         }
 
     }

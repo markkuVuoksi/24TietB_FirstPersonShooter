@@ -11,7 +11,7 @@ public class SL_PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     public Transform groundCheck;
-
+    private SL_EnemyManager enemyManager;
 
 
     private CharacterController characterController;
@@ -46,6 +46,8 @@ public class SL_PlayerMovement : MonoBehaviour
 
       }
 
+      enemyManager = GameObject.Find("EnemyManager").GetComponent<SL_EnemyManager>();
+
     }
 
 
@@ -53,8 +55,11 @@ public class SL_PlayerMovement : MonoBehaviour
     private void Update()
 
     {
-
-        MovePlayer();
+        if(!enemyManager.isGameEnd)
+        {
+            MovePlayer();
+        }
+        
 
     }
 

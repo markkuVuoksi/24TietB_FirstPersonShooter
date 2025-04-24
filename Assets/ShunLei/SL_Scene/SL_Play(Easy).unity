@@ -512,9 +512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!54 &59736862
@@ -1486,13 +1483,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241631873}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.010000001, y: -0.04, z: -0.82}
+  m_LocalRotation: {x: -0.015589819, y: -0, z: -0, w: 0.99987847}
+  m_LocalPosition: {x: 0.010000001, y: 0.21, z: 0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1009542481}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.787, y: 0, z: 0}
 --- !u!114 &241631877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,7 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24815fda5b1cc584eacdd8dd726242a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 300
 --- !u!1 &245036330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,7 +1762,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1978510712}
-  - {fileID: 1341730531}
   - {fileID: 1495211289}
   - {fileID: 1041882326}
   - {fileID: 882290136}
@@ -1873,9 +1869,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!54 &775667422
@@ -2155,15 +2148,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Enemies :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
+  m_sharedMaterial: {fileID: -2620318584702355519, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294933504
+  m_fontColor: {r: 0, g: 0.4862745, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2458,9 +2451,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!54 &923429574
@@ -2970,8 +2960,8 @@ Transform:
   m_GameObject: {fileID: 1009542473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.62, z: -0.4}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.89, z: -0.4}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 241631876}
@@ -3167,7 +3157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125.00003, y: -52}
+  m_AnchoredPosition: {x: 148, y: -52}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041882327
@@ -3192,15 +3182,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time left : '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
+  m_sharedMaterial: {fileID: -2620318584702355519, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294933504
+  m_fontColor: {r: 0, g: 0.4862745, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3889,81 +3879,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316004089}
   m_CullTransparentMesh: 1
---- !u!1 &1341730530
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1341730531}
-  - component: {fileID: 1341730533}
-  - component: {fileID: 1341730532}
-  m_Layer: 5
-  m_Name: Time background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1341730531
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341730530}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 592439845}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121.24982, y: -44.739838}
-  m_SizeDelta: {x: 218.4997, y: 51.479706}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1341730532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341730530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.6132076, b: 0.13357103, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1341730533
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341730530}
-  m_CullTransparentMesh: 1
 --- !u!1 &1381725422
 GameObject:
   m_ObjectHideFlags: 0
@@ -4042,9 +3957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 75
   health: 75
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &1381725426
@@ -4366,7 +4278,7 @@ GameObject:
   - component: {fileID: 1495211291}
   - component: {fileID: 1495211290}
   m_Layer: 5
-  m_Name: Enemy background
+  m_Name: indication background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4388,8 +4300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -141.85278, y: -44.739838}
-  m_SizeDelta: {x: 228.20532, y: 51.479706}
+  m_AnchoredPosition: {x: -607.88, y: -44.739838}
+  m_SizeDelta: {x: 1160.2, y: 51.4797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495211290
 MonoBehaviour:
@@ -4404,7 +4316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6117647, g: 0.06679161, b: 0, a: 1}
+  m_Color: {r: 0.5294118, g: 0.8, b: 0.94509804, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4621,9 +4533,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 75
   health: 75
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &1563296072
@@ -4738,6 +4647,7 @@ MonoBehaviour:
   gameOverText: {fileID: 657087957}
   winGameText: {fileID: 235538636}
   enemyCountText: {fileID: 882290134}
+  deadText: {fileID: 0}
 --- !u!4 &1594947253
 Transform:
   m_ObjectHideFlags: 0
@@ -5966,9 +5876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &2135062239

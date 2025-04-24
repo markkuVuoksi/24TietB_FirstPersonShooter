@@ -382,9 +382,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!54 &59736862
@@ -1678,7 +1675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24815fda5b1cc584eacdd8dd726242a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 200
 --- !u!1001 &257309689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2481,6 +2478,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1931376853}
   winGameText: {fileID: 1726594706}
   enemyCountText: {fileID: 1975822229}
+  deadText: {fileID: 0}
 --- !u!4 &421308358
 Transform:
   m_ObjectHideFlags: 0
@@ -2852,15 +2850,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time left : '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
+  m_sharedMaterial: {fileID: -2620318584702355519, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284169217
-  m_fontColor: {r: 0.005072971, g: 0.23431686, b: 0.3584906, a: 1}
+    rgba: 4294933504
+  m_fontColor: {r: 0, g: 0.4862745, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2883,7 +2881,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -4348,9 +4346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!54 &775667422
@@ -5159,7 +5154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.52954787, g: 0.7984402, b: 0.9433962, a: 0.79607844}
+  m_Color: {r: 0.52954787, g: 0.7984402, b: 0.9433962, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5364,9 +5359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 75
   health: 75
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &943526922
@@ -7244,9 +7236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 75
   health: 75
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &1381725426
@@ -9956,9 +9945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   health: 50
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &1856217204
@@ -10951,15 +10937,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Enemies :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
+  m_sharedMaterial: {fileID: -2620318584702355519, guid: a4ab410abf89cf44f8e152d506d12353, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284234754
-  m_fontColor: {r: 0.007843138, g: 0.23529412, b: 0.36078432, a: 1}
+    rgba: 4294933504
+  m_fontColor: {r: 0, g: 0.4862745, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11781,9 +11767,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
-  speed: 1
-  distance: 5
-  rollSpeed: 200
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
 --- !u!65 &2135062239
