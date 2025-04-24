@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class MM_PlayerMovement : MonoBehaviour
 {
     //Player HealthBar
-    public float playerHealth = 10000.0f;
+    public float playerHealth = 100.0f;
     public Image healthBoarder;
     public Image healthBar;
 

@@ -11,6 +11,23 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Trung/Trung_Scence/Trung_Scence.unity
     guid: 2d5ad852856c1a44196aa51c2fe94cc7
+  - enabled: 1
+    path: Assets/ShunLei/SL_Scene/SL_MainMenu.unity
+    guid: e2ced4a9283621843a2670e92f642278
+  - enabled: 1
+    path: Assets/ShunLei/SL_Scene/SL_Play(Normal).unity
+    guid: 17a9435f036eae84fb8b3c7ab1f659e7
+  - enabled: 1
+    path: Assets/ShunLei/SL_Scene/SL_Play(Hard).unity
+    guid: 9f5afa6e45f7fd2419321fef53b4652e
+  - enabled: 1
+    path: Assets/ShunLei/SL_Scene/SL_Play(Easy).unity
+    guid: b5f0363856d79884a97a1b77449d0a16
+    path: Assets/Moe/MM_Scenes/MM_MainMenu.unity
+    guid: 6c7106af59cd9184f8ab6a67f95689b3
+  - enabled: 1
+    path: Assets/Moe/MM_Scenes/MM_Scene1.unity
+    guid: 795106f164da05b4d8ce8441a1122ea5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

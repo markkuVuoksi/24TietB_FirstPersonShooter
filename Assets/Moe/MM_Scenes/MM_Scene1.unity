@@ -5300,8 +5300,8 @@ MonoBehaviour:
   healthBoarder: {fileID: 717733715}
   healthBar: {fileID: 1176564986}
   Target: {fileID: 1063596122}
-  AttackDistance: 5
-  playerMovement: {fileID: 0}
+  AttackDistance: 3
+  playerMovement: {fileID: 1063596118}
 --- !u!54 &2014231645
 Rigidbody:
   m_ObjectHideFlags: 0

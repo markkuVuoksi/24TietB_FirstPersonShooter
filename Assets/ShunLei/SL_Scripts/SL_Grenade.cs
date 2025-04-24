@@ -21,9 +21,9 @@ public class SL_Grenade : MonoBehaviour
     public AudioClip explosionSound; // The sound to play when the object explodes
     private AudioSource audioSource; // AudioSource to play sound
 
-
     void Start()
     {
+
         // Get the AudioSource component attached to the GameObject
         audioSource = GetComponent<AudioSource>();
 
@@ -51,7 +51,7 @@ public class SL_Grenade : MonoBehaviour
         if (audioSource != null)
         {
             // Check if audio is playing
-            Debug.Log("Audio Clip: " + audioSource.clip.name);
+            //Debug.Log("Audio Clip: " + audioSource.clip.name);
 
             audioSource.Play();  // Play the AudioSource when collision occurs
             while (audioSource.isPlaying)
@@ -68,14 +68,14 @@ public class SL_Grenade : MonoBehaviour
 
     void Explode()
     {
-        
+
         if (hasExploded) return;
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius, damageableLayer);
-
+        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius,damageableLayer);
+   
         foreach (Collider nearbyObject in colliders)
         {
-            //Debug.Log("Near object name" + nearbyObject.name);
+           
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -103,6 +103,6 @@ public class SL_Grenade : MonoBehaviour
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
         Destroy(gameObject);
-       
+
     }
 }
