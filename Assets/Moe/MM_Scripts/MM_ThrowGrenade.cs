@@ -1,20 +1,27 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UIElements;
+using TMPro;
 
 public class MM_ThrowGrenade : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        canThrow = true;
     }
     public GameObject grenadePrefab;
 
     public Camera playerCamera;
 
+    public TMP_Text count;
+
     public float throwForce = 10f;
+    public float throwCooldown = 3f;
+    public float grenadeCount = 3;
+    public bool canThrow = false;
 
-
-
+    
     private void Awake()
 
     {
@@ -35,14 +42,19 @@ public class MM_ThrowGrenade : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && canThrow && grenadeCount > 0)
 
         {
 
             ThrowGrenade();
+            grenadeCount--;
 
         }
-
+        UpdateGrenadeCount();
+    }
+    void UpdateGrenadeCount()
+    {
+        count.text = "Grenade : " + grenadeCount.ToString();
     }
 
 
@@ -50,7 +62,7 @@ public class MM_ThrowGrenade : MonoBehaviour
     void ThrowGrenade()
 
     {
-
+        canThrow = false;
         GameObject Grenade = Instantiate(grenadePrefab, playerCamera.transform.position + playerCamera.transform.forward, Quaternion.identity);
 
         Rigidbody rb = Grenade.GetComponent<Rigidbody>();
@@ -62,6 +74,16 @@ public class MM_ThrowGrenade : MonoBehaviour
             rb.AddForce(playerCamera.transform.forward * throwForce, ForceMode.VelocityChange);
 
         }
+        Debug.Log("The Bomb is on cooldown");
+        StartCoroutine(ResetThrowCoolDown());
 
     }
+
+    IEnumerator ResetThrowCoolDown()
+    {
+        yield return new WaitForSeconds(throwCooldown);
+        canThrow = true;
+
+    }
+
 }

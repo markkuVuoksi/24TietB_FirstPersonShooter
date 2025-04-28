@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using TMPro;
 
 // here we make the interface now
 
@@ -15,30 +17,57 @@ public class MM_Shooting : MonoBehaviour
     public float range = 500.0f;
 
     public float damage = 25.0f;
+    public float load = 30.0f;
+
+    public TMP_Text bullet;
 
     public Camera fpsCamera;
 
     public LayerMask shootingLayer;
 
+    //variable for waiting to shoot
+    public bool canShoot = false;
+    public float waitToShoot = 2f;
+
+    public ParticleSystem gunFlash;
+    public MM_AudioManager audioManager;
+
+
+    void Start()
+    {
+        canShoot = true;
+        audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
+    }
+
     void Update()
 
     {
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot && load > 0)
 
         {
 
             Shoot();
+            load--;
+            ShootAnimation();
+            audioManager.PlayGunSound();
 
             Debug.Log("Shoot");
 
         }
+        UpdateBullet();
 
+    }
+    
+    void UpdateBullet()
+    {
+        bullet.text = "Bullet : " + load.ToString();
     }
 
     void Shoot()
 
     {
+        canShoot = false;
 
         RaycastHit hit;
 
@@ -53,7 +82,6 @@ public class MM_Shooting : MonoBehaviour
             // check if the object is hittable
 
             IDamageableMM damageable = hit.transform.GetComponent<IDamageableMM>();
-            Debug.Log("Enemy health is: ");
 
             if (damageable != null)
 
@@ -64,6 +92,25 @@ public class MM_Shooting : MonoBehaviour
             }
 
         }
+        StartCoroutine(WaitToShoot());
+
+        
 
     }
+
+    IEnumerator WaitToShoot()
+    {
+        yield return new WaitForSeconds(waitToShoot);
+        canShoot = true;
+    }
+    void ShootAnimation()
+    {
+        if (gunFlash != null)
+        {
+            Debug.Log("Animation Triggered");
+            gunFlash.Play();
+        }
+    }
+
+  
 }

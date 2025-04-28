@@ -1,22 +1,34 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MM_Enemy : MonoBehaviour, IDamageableMM
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public float health;
+    private float health;
+    private float maxHealth;
     private Vector3 direction;
     private float speed = 50f;
     private Rigidbody rb;
 
+    public MM_Grenadier grenadier;
+
+    public Image healthBoarder;
+    public Image healthBar;
+    private Camera _cam;
+    public ParticleSystem getShot;
+    //public ParticleSystem deathAni;
 
     // Define the boundaries (min and max values for each axis)
-    private float minX = -20f, maxX = 20f;
-    private float minY = -1f, maxY = 10f;
-    private float minZ = -40f, maxZ = 0f;
+    private float minX = -50f, maxX = 60f;
+    private float minY = -1f, maxY = 15f;
+    private float minZ = -50f, maxZ = 50f;
     void Start()
     {
+        grenadier = Object.FindAnyObjectByType<MM_Grenadier>();
+        _cam = Camera.main;
+        health = maxHealth;
         rb = GetComponent<Rigidbody>();
         RandomizeHealth();
 
@@ -30,6 +42,9 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     {
 
         health -= damageAmount;
+        GetShotAnimation();
+
+        healthBar.fillAmount = health / maxHealth;
 
         Debug.Log("Enemy health is: " + health);
 
@@ -38,6 +53,7 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
         {
 
             Destroy(gameObject);
+            grenadier.health -= 100;
 
         }
 
@@ -58,6 +74,13 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     
     void Move()
     {
+        if (rb != null)
+        {
+            Vector3 enemyRotation = rb.transform.eulerAngles;
+            enemyRotation.z = 0;
+        }
+
+       
         rb.MovePosition(transform.position+direction * speed * Time.deltaTime);
         RestrictOutOfBound();
     }
@@ -83,10 +106,24 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     void RandomizeHealth()
     {
         health = Random.Range(80f, 140f);
+        maxHealth = health;
+    }
+
+    void GetShotAnimation()
+    {
+        if(getShot != null)
+        {
+            Debug.Log("getshot animatoion played");
+            getShot.Play();
+        }
     }
     // Update is called once per frame
     void Update()
     {
         Move();
+
+        //healthBar and camera have a Kdrama moment 
+        healthBoarder.transform.rotation = Quaternion.LookRotation(transform.position - _cam.transform.position);
+        healthBar.transform.rotation = healthBoarder.transform.rotation;
     }
 }

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 1
   blastRadius: 5
-  explosionForce: 700
+  explosionForce: 100
   damageAmount: 50
   damageableLayer:
     serializedVersion: 2

@@ -18,6 +18,7 @@ public class SL_EnemyManager : MonoBehaviour
     public GameObject gameOverText;
     public GameObject winGameText;
     public TextMeshProUGUI enemyCountText;
+    public GameObject deadText; // UI panel to show when the game is over
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class SL_EnemyManager : MonoBehaviour
     {
         gameOverText.SetActive(false);  // Hide at the start
         winGameText.SetActive(false);
+        gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
     }
 
     void Update()
@@ -52,9 +55,9 @@ public class SL_EnemyManager : MonoBehaviour
             // Check if time is up
             if (gameTime <= 0)
             {
-                GameOver();
+                
                 isGameEnd = true;
-
+                GameOver();
                 // Show the mouse cursor
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None; // Allow the cursor to move freely
@@ -77,10 +80,9 @@ public class SL_EnemyManager : MonoBehaviour
     public void UnregisterEnemy()
     {
         enemyCount--;
-        if (enemyCount <= 0)
+        if (enemyCount <= 0 && !isGameEnd)
         {
             Debug.Log("All enemies are destroyed.");
-
             isGameEnd = true;
             Victory();
 
@@ -99,6 +101,20 @@ public class SL_EnemyManager : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverText.SetActive(false);  // Show the UI
+            gameOverPanel.SetActive(true); // Show Game Over UI
+        }
+        //StartCoroutine(ShowGameOverPanel());
+
+    }
+
+    public async void GameOverDead()
+    {
+        //Time.timeScale = 0f; // Stops physics-based movement
+        deadText.SetActive(true);  // Show the UI
+        await Task.Delay(2000); // 3000ms = 3 seconds
+        if (gameOverPanel != null)
+        {
+            deadText.SetActive(false);  // Show the UI
             gameOverPanel.SetActive(true); // Show Game Over UI
         }
         //StartCoroutine(ShowGameOverPanel());

@@ -1,7 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MM_PlayerMovement : MonoBehaviour
 {
+    //Player HealthBar
+    public float playerHealth = 100.0f;
+    public Image healthBoarder;
+    public Image healthBar;
+
     public float speed = 5.0f;
 
     public float jumpHeight = 2.0f;
@@ -11,7 +19,6 @@ public class MM_PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     public Transform groundCheck;
-
 
 
     private CharacterController characterController;
@@ -55,6 +62,9 @@ public class MM_PlayerMovement : MonoBehaviour
     {
 
         MovePlayer();
+
+        //update the health bar
+        healthBar.fillAmount = playerHealth / 100;
 
     }
 

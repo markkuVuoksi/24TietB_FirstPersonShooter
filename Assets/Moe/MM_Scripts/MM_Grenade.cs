@@ -15,7 +15,11 @@ public class MM_Grenade : MonoBehaviour
 
     public LayerMask damageableLayer;
 
+    public ParticleSystem bombExplode;
 
+
+    public MM_AudioManager audioManager;
+    public MM_Grenadier hitGrenadier;
 
     private bool hasExploded = false;
 
@@ -25,6 +29,7 @@ public class MM_Grenade : MonoBehaviour
     void Start()
 
     {
+        audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
 
         StartCoroutine(ExplodeAfterDelay());
 
@@ -39,6 +44,7 @@ public class MM_Grenade : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         Explode();
+        audioManager.PlayBombSound();
 
     }
 
@@ -68,8 +74,6 @@ public class MM_Grenade : MonoBehaviour
 
             }
 
-
-
             IDamageableMM damageable = nearbyObject.GetComponent<IDamageableMM>();
 
             if (damageable != null)
@@ -80,14 +84,38 @@ public class MM_Grenade : MonoBehaviour
 
             }
 
-        }
+            if(nearbyObject.CompareTag("Grenadier"))
+            {
+                MM_Grenadier hitGrenadier = nearbyObject.GetComponent<MM_Grenadier>();
+                if (hitGrenadier != null)
+                {
+                    hitGrenadier.GrenadierStopForASecond();
+                }
+            }
 
+        }
+        BombAnimation();
+        Debug.Log("Explode");
 
 
         hasExploded = true;
 
         Destroy(gameObject);
 
+    }
+
+    
+    void BombAnimation()
+    {
+        if (bombExplode != null)
+        {
+            Debug.Log("Bomb has exploded");
+
+            bombExplode.transform.parent = null;
+            bombExplode.transform.position = transform.position;
+            bombExplode.Play();
+            Destroy(bombExplode.gameObject, bombExplode.main.duration);
+        }
     }
     // Update is called once per frame
     void Update()
