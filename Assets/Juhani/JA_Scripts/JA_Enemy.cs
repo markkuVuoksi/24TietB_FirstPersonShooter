@@ -12,6 +12,5 @@ public class JA_Enemy : MonoBehaviour, IDamageable_JA
         {
             Destroy(gameObject);
         }
-
     }
 }

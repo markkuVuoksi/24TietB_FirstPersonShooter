@@ -8,10 +8,8 @@ public class JA_cameraMovement : MonoBehaviour
 
     private void Start()
     {
-
         playerBody = transform.parent;
         Cursor.lockState = CursorLockMode.Locked; // lukitse kursori keskelle ruutua
-
     }
 
     private void Update()
@@ -29,6 +27,5 @@ public class JA_cameraMovement : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         playerBody.Rotate(Vector3.up * mouseX);
-
     }
 }
