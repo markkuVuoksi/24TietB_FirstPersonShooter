@@ -91,7 +91,7 @@ public class MM_Grenadier : MonoBehaviour
         yield return new WaitForSeconds(HealthReduction);
         if (playerMovement.playerHealth > 0)
         {
-            playerMovement.playerHealth -= Random.Range(10, 20);
+            playerMovement.playerHealth -= Random.Range(100,200);
         }
         Debug.Log("Health is reduced to" + playerMovement.playerHealth);
         isAttacking = false;

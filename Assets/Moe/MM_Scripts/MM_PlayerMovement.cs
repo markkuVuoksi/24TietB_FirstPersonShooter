@@ -74,6 +74,7 @@ public class MM_PlayerMovement : MonoBehaviour
 
     public void LostMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
         gameOverUI.SetActive(true);
     }
 
