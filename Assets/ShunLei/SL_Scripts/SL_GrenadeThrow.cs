@@ -17,6 +17,8 @@ public class SL_GrenadeThrow : MonoBehaviour
 
     public SL_EnemyManager sL_EnemyManager;
 
+    private SL_PauseManager pauseManager;
+
 
     private void Awake()
 
@@ -35,6 +37,7 @@ public class SL_GrenadeThrow : MonoBehaviour
     void Start()
     {
         sL_EnemyManager = GameObject.Find("EnemyManager").GetComponent<SL_EnemyManager>();
+        //pauseManager = GameObject.Find("pause button").GetComponent<SL_PauseManager>();
     }
 
     void Update()

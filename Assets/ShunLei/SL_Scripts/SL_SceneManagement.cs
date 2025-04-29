@@ -6,6 +6,7 @@ public class SL_SceneManagement : MonoBehaviour
 {
     public void LoadNewScene(string sceneName)
     {
+        Time.timeScale = 1f; // Reset time scale
         SceneManager.LoadScene(sceneName);
     }
 
@@ -17,7 +18,7 @@ public class SL_SceneManagement : MonoBehaviour
     public void RestartGame()
     {
         
-        //Time.timeScale = 1f; // Reset time scale
+        Time.timeScale = 1f; // Reset time scale
 
          // Start a coroutine to wait before reloading the scene
         //StartCoroutine(DelayedSceneReload());
