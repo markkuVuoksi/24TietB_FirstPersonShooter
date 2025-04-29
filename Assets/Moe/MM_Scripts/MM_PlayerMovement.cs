@@ -20,6 +20,10 @@ public class MM_PlayerMovement : MonoBehaviour
 
     public Transform groundCheck;
 
+    //related with lost UI
+    public GameObject gameOverUI;
+    public bool isDead = false;
+
 
     private CharacterController characterController;
 
@@ -66,6 +70,11 @@ public class MM_PlayerMovement : MonoBehaviour
         //update the health bar
         healthBar.fillAmount = playerHealth / 100;
 
+    }
+
+    public void LostMenu()
+    {
+        gameOverUI.SetActive(true);
     }
 
 
