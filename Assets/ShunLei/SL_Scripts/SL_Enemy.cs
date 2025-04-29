@@ -15,6 +15,8 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
 
     public SL_HealthBar healthBar;
 
+    public GameObject attackWarningMessage;
+
     void Start()
     {
         startPosition = transform.position;
@@ -79,10 +81,14 @@ public class SL_Enemy : MonoBehaviour, IDamageableSL
 
 
         if (health <= 0)
-
         {
-
             Destroy(gameObject);
+
+            //Check attack warning message is null or not because attack warning message is attched only with attack enemy (Grenadier) 
+            if(attackWarningMessage != null)
+            {
+                attackWarningMessage.SetActive(false);
+            }
 
         }
 

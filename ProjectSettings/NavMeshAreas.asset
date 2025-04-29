@@ -147,7 +147,7 @@ NavMeshProjectSettings:
     agentTypeID: -1923039037
     agentRadius: 1.5
     agentHeight: 4
-    agentSlope: 31.3
+    agentSlope: 26
     agentClimb: 0.27
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
@@ -163,10 +163,10 @@ NavMeshProjectSettings:
       m_Flags: 0
   - serializedVersion: 3
     agentTypeID: 658490984
-    agentRadius: 1.02
+    agentRadius: 0.5
     agentHeight: 3
-    agentSlope: 5.2
-    agentClimb: 0.49
+    agentSlope: 3.4
+    agentClimb: 0.3
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -184,5 +184,5 @@ NavMeshProjectSettings:
   - Eilen
   - Humanoid
   - Test
-  - Moe grenadier
+  - New Agent
   - Grenadier2
