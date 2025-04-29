@@ -24,18 +24,21 @@ public class SL_PlayerShooting : MonoBehaviour
 
     public AudioSource audioSoruce;
     public SL_EnemyManager sL_EnemyManager;
+    private SL_PauseManager pauseManager;
+
 
     void Start()
     {
         sL_EnemyManager = GameObject.Find("EnemyManager").GetComponent<SL_EnemyManager>();
+        //pauseManager = GameObject.Find("pause button").GetComponent<SL_PauseManager>();
     }
 
     void Update()
 
     {
         if (Input.GetButtonDown("Fire1") && !sL_EnemyManager.isGameEnd)
-
         {
+            
             //Show particle effect when an object is hit
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
