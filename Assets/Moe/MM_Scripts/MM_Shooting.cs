@@ -31,19 +31,23 @@ public class MM_Shooting : MonoBehaviour
 
     public ParticleSystem gunFlash;
     public MM_AudioManager audioManager;
+    public MM_PlayerMovement playerMovement;
+    public MM_Enemy _Enemy;
 
 
     void Start()
     {
         canShoot = true;
         audioManager = Object.FindAnyObjectByType<MM_AudioManager>();
+        playerMovement = Object.FindAnyObjectByType<MM_PlayerMovement>();
+        _Enemy = Object.FindAnyObjectByType<MM_Enemy>();
     }
 
     void Update()
 
     {
 
-        if (Input.GetButtonDown("Fire1") && canShoot && load > 0)
+        if (Input.GetButtonDown("Fire1") && canShoot && load > 0 && !playerMovement.GameOver && !_Enemy.YouWin)
 
         {
 

@@ -5,11 +5,7 @@ using TMPro;
 
 public class MM_ThrowGrenade : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        canThrow = true;
-    }
+    
     public GameObject grenadePrefab;
 
     public Camera playerCamera;
@@ -21,7 +17,16 @@ public class MM_ThrowGrenade : MonoBehaviour
     public float grenadeCount = 3;
     public bool canThrow = false;
 
-    
+    public MM_PlayerMovement _PlayerMovement;
+    public MM_Enemy _Enemy;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        canThrow = true;
+        _Enemy = Object.FindAnyObjectByType<MM_Enemy>();
+        _PlayerMovement = Object.FindAnyObjectByType<MM_PlayerMovement>();
+    }
     private void Awake()
 
     {
@@ -42,7 +47,7 @@ public class MM_ThrowGrenade : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && canThrow && grenadeCount > 0)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && canThrow && grenadeCount > 0 && !_PlayerMovement.GameOver && !_Enemy.YouWin)
 
         {
 

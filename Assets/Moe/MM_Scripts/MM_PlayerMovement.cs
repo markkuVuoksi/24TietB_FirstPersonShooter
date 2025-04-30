@@ -22,6 +22,7 @@ public class MM_PlayerMovement : MonoBehaviour
 
     //related with lost UI
     public GameObject gameOverUI;
+    public bool GameOver = false;
     public bool isDead = false;
 
 
@@ -35,11 +36,14 @@ public class MM_PlayerMovement : MonoBehaviour
 
     private float gravity = -9.81f; // you may need to adjust this to simulate physics
 
+    private MM_Grenadier grenadier;
+
 
 
     private void Start()
 
     {
+        grenadier = Object.FindAnyObjectByType<MM_Grenadier>();
 
         characterController = GetComponent<CharacterController>();
 
@@ -74,6 +78,8 @@ public class MM_PlayerMovement : MonoBehaviour
 
     public void LostMenu()
     {
+        grenadier.stopAnimation = true;
+        GameOver = true;
         Cursor.lockState = CursorLockMode.None;
         gameOverUI.SetActive(true);
     }

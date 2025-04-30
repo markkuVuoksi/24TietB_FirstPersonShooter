@@ -18,17 +18,20 @@ public class MM_Grenadier : MonoBehaviour
 
     //to make that ReduceHealth() wont occur frame per second
     private bool isAttacking = false;
+    public bool stopAnimation = false;
 
     private UnityEngine.AI.NavMeshAgent m_Agent;
-    public Animator m_Animator;
     private float m_Distance;
 
     public MM_PlayerMovement playerMovement;
+    public Animator m_Animator;
+    public MM_Enemy _Enemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerMovement = Object.FindAnyObjectByType<MM_PlayerMovement>();
+        _Enemy = Object.FindAnyObjectByType<MM_Enemy>();
         _cam = Camera.main;
 
         m_Agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -44,21 +47,23 @@ public class MM_Grenadier : MonoBehaviour
         //follow the player
         m_Distance = Vector3.Distance(m_Agent.transform.position, Target.position);
 
-        if(m_Distance < AttackDistance)
+        if(m_Distance < AttackDistance && !isAttacking && !playerMovement.GameOver && !_Enemy.YouWin)
         {
             m_Agent.isStopped = true;
             m_Animator.SetBool("Attack", true);
-            Debug.Log("Is Attackingggggggggggggggggg");
 
             if(!isAttacking)
             {
                 StartCoroutine(ReduceHealth());
             }
         }
-        else if (m_Distance > AttackDistance && m_Agent.isStopped) 
+        else if (m_Distance > AttackDistance && m_Agent.isStopped && !playerMovement.GameOver && !_Enemy.YouWin) 
         {
             m_Agent.isStopped = false;
             m_Animator.SetBool("Attack", false);
+        }
+        else if(m_Distance > AttackDistance)
+        {
             m_Agent.destination = Target.position;
         }
         //make health bar look at camera
@@ -89,11 +94,12 @@ public class MM_Grenadier : MonoBehaviour
 
         isAttacking = true;
         yield return new WaitForSeconds(HealthReduction);
+
+        //Reduce player health
         if (playerMovement.playerHealth > 0)
         {
-            playerMovement.playerHealth -= Random.Range(100,200);
+            playerMovement.playerHealth -= Random.Range(20,30);
         }
-        Debug.Log("Health is reduced to" + playerMovement.playerHealth);
         isAttacking = false;
     }
 
