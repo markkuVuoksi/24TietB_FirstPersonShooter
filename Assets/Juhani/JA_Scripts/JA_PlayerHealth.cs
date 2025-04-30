@@ -10,7 +10,6 @@ public class JA_PlayerHealth : MonoBehaviour, IDamageable_JA
 
     [Header("UI")]
     public Slider healthBar;
-    public GameObject gameOverUI;
     public Image hurtFlashImage;
     public float flashDuration = 0.2f;
     public Color flashColor = new Color(1, 0, 0, 0.4f); // punainen 40 % alpha
@@ -58,6 +57,7 @@ public class JA_PlayerHealth : MonoBehaviour, IDamageable_JA
 
     void Die()
     {
+        JA_RoundManager.Instance?.ShowGameOver();
         Debug.Log("Player died");
 
         var cc = GetComponent<JA_playerMovement>();
@@ -65,12 +65,5 @@ public class JA_PlayerHealth : MonoBehaviour, IDamageable_JA
 
         var gun = GetComponent<JA_Hitscan>();
         if (gun != null) gun.enabled = false;
-        
-
-        if (gameOverUI) gameOverUI.SetActive(true);
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Time.timeScale = 0f;
     }
 }

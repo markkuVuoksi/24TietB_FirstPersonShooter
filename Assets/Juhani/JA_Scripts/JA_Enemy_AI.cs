@@ -113,7 +113,7 @@ public class JA_Enemy_AI : MonoBehaviour
     {
         float dist = Vector3.Distance(transform.position, player.position);
 
-        if (dist > attackRadius)
+        if (!HasLineOfSight())
         {
             state = State.Chase;
             agent.isStopped = false;
@@ -159,6 +159,22 @@ public class JA_Enemy_AI : MonoBehaviour
         Vector3 dir = (player.position + Vector3.up) - (transform.position + Vector3.up * 1.5f);
 
         return !Physics.Raycast(transform.position + Vector3.up * 1.5f, dir.normalized, dist, sightLayers);
+    }
+
+    bool HasLineOfSight()
+    {
+        Vector3 eye = transform.position + Vector3.up * 1.5f;
+        Vector3 head = player.position + Vector3.up; // pelaajan pää
+        Vector3 dir = head - eye;
+        float dist = dir.magnitude;
+
+        // maski, joka sisältää Environment + Player, mutta EI Enemy-layeriä
+        if (Physics.Raycast(eye, dir.normalized, out RaycastHit hit, dist, sightLayers))
+        {
+            // jos ensimmäinen osuma EI ole pelaaja -> este edessä
+            return hit.transform == player;
+        }
+        return false;
     }
 
     void OnDrawGizmosSelected()

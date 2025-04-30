@@ -48,7 +48,7 @@ public class JA_Hitscan : MonoBehaviour
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, range))
+        if (Physics.Raycast(ray, out RaycastHit hit, range, shootingLayer, QueryTriggerInteraction.Ignore))
         {
             // Debuggausta, piirrellään drawray, kun osutaan kohteeseen
             Debug.Log("Hit: " + hit.transform.name);
@@ -56,7 +56,8 @@ public class JA_Hitscan : MonoBehaviour
             
 
             // checkaa jos objekti on sellainen mihin voi osua
-            IDamageable_JA damageable = hit.collider.GetComponent<IDamageable_JA>() ?? hit.collider.GetComponentInParent<IDamageable_JA>();
+            IDamageable_JA damageable = hit.transform.GetComponent<IDamageable_JA>() ?? hit.transform.GetComponentInParent<IDamageable_JA>();
+                        
 
             if (damageable != null)
             {

@@ -8,9 +8,17 @@ public class JA_Enemy : MonoBehaviour, IDamageable_JA
         Debug.Log("Take damage");
         health -= damageAmount;
         Debug.Log("Enemy health is: " + health);
+
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        JA_RoundManager.Instance?.EnemyKilled();
+        Destroy(gameObject);
+        
     }
 }
