@@ -514,6 +514,7 @@ MonoBehaviour:
   health: 50
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
+  attackWarningMessage: {fileID: 0}
 --- !u!54 &59736862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2291,6 +2292,7 @@ MonoBehaviour:
   health: 50
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
+  attackWarningMessage: {fileID: 0}
 --- !u!54 &775667422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3009,6 +3011,7 @@ MonoBehaviour:
   health: 50
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
+  attackWarningMessage: {fileID: 0}
 --- !u!54 &923429574
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4809,6 +4812,7 @@ MonoBehaviour:
   health: 75
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
+  attackWarningMessage: {fileID: 0}
 --- !u!65 &1381725426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5521,6 +5525,7 @@ MonoBehaviour:
   health: 75
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
+  attackWarningMessage: {fileID: 0}
 --- !u!65 &1563296072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5630,9 +5635,9 @@ RectTransform:
   - {fileID: 159280031}
   m_Father: {fileID: 592439845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -546, y: 79}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -133}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591055238
@@ -7476,6 +7481,7 @@ MonoBehaviour:
   health: 50
   explosionParticle: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
   healthBar: {fileID: 0}
+  attackWarningMessage: {fileID: 0}
 --- !u!65 &2135062239
 BoxCollider:
   m_ObjectHideFlags: 0
