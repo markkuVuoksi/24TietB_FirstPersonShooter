@@ -132,8 +132,8 @@ MonoBehaviour:
   damageableLayer:
     serializedVersion: 2
     m_Bits: 64
-  soundEffect: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
-  effect: {fileID: 198000012942003240, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  explosionClip: {fileID: 8300000, guid: da4b7e53ab703f8408a34b05b2a6ceec, type: 3}
+  explosionEffect: {fileID: 6601538019107920666, guid: e7d1d525c37829e48a87917af969d2a9, type: 3}
 --- !u!54 &5267599102752829790
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,8 +171,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
-  m_Resource: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae537ad7a87b8d94393805c4078ebcc4, type: 3}
+  m_Resource: {fileID: 8300000, guid: ae537ad7a87b8d94393805c4078ebcc4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

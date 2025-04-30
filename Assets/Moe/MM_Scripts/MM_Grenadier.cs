@@ -12,13 +12,15 @@ public class MM_Grenadier : MonoBehaviour
 
     public Transform Target;
     public float AttackDistance;
-    private float HealthReduction = 1f;
+    private float HealthReduction = 1.4f;
+
+    public ParticleSystem explode;
 
     //to make that ReduceHealth() wont occur frame per second
     private bool isAttacking = false;
 
     private UnityEngine.AI.NavMeshAgent m_Agent;
-    private Animator m_Animator;
+    public Animator m_Animator;
     private float m_Distance;
 
     public MM_PlayerMovement playerMovement;
@@ -32,6 +34,8 @@ public class MM_Grenadier : MonoBehaviour
         m_Agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_Animator = GetComponent<Animator>();
         m_Animator.applyRootMotion = false;
+
+        m_Agent.isStopped = true;
     }
 
     // Update is called once per frame
@@ -40,7 +44,7 @@ public class MM_Grenadier : MonoBehaviour
         //follow the player
         m_Distance = Vector3.Distance(m_Agent.transform.position, Target.position);
 
-        if(m_Distance < AttackDistance )
+        if(m_Distance < AttackDistance)
         {
             m_Agent.isStopped = true;
             m_Animator.SetBool("Attack", true);
@@ -51,7 +55,7 @@ public class MM_Grenadier : MonoBehaviour
                 StartCoroutine(ReduceHealth());
             }
         }
-        else if (m_Distance > AttackDistance ) 
+        else if (m_Distance > AttackDistance && m_Agent.isStopped) 
         {
             m_Agent.isStopped = false;
             m_Animator.SetBool("Attack", false);
@@ -77,14 +81,19 @@ public class MM_Grenadier : MonoBehaviour
 
     IEnumerator ReduceHealth()
     {
+        if(playerMovement.playerHealth <= 0 && !playerMovement.isDead )
+        {
+            playerMovement.isDead = true;
+            playerMovement.LostMenu();
+        }
+
         isAttacking = true;
         yield return new WaitForSeconds(HealthReduction);
         if (playerMovement.playerHealth > 0)
         {
-            playerMovement.playerHealth -= Random.Range(10, 20);
+            playerMovement.playerHealth -= Random.Range(100,200);
         }
         Debug.Log("Health is reduced to" + playerMovement.playerHealth);
-        yield return new WaitForSeconds(HealthReduction);
         isAttacking = false;
     }
 
@@ -113,12 +122,19 @@ public class MM_Grenadier : MonoBehaviour
     {
         if(health == 0)
         {
+            StartCoroutine(Animation());
             m_Agent.isStopped = true;
             m_Animator.SetBool("Die", true);
             yield return new WaitForSeconds(duration);
             Destroy(gameObject);
         }
         
+    }
+
+    IEnumerator Animation()
+    {
+        yield return new WaitForSeconds(2);
+        explode.Play();
     }
 
 }
