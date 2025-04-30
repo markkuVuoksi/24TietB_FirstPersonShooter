@@ -11,8 +11,12 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
     private Vector3 direction;
     private float speed = 50f;
     private Rigidbody rb;
+    public bool YouWin = false;
 
     public MM_Grenadier grenadier;
+
+    //Win Ui
+    public GameObject YouWinUI;
 
     public Image healthBoarder;
     public Image healthBar;
@@ -55,6 +59,12 @@ public class MM_Enemy : MonoBehaviour, IDamageableMM
             Destroy(gameObject);
             grenadier.health -= 100;
 
+        }
+        if(grenadier.health <= 0)
+        {
+            YouWin = true;
+            Cursor.lockState = CursorLockMode.None;
+            YouWinUI.SetActive(true);
         }
 
     }

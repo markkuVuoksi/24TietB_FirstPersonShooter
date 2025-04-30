@@ -8,6 +8,7 @@ public class MM_MainMenu : MonoBehaviour
    public void PlayGame(string name)
     {
         SceneManager.LoadSceneAsync(name);
+        Debug.Log("Scene Loaded");
     }
 
     public void QuitGame()
