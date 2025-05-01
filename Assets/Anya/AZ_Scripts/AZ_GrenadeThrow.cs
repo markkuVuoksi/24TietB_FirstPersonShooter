@@ -15,6 +15,9 @@ public class AZ_GrenadeThrow : MonoBehaviour
 
     public float throwForce = 10f;
 
+    public float throwCooldown = 1f;
+
+    private float lastThrowTime = -Mathf.Infinity;
 
 
     private void Awake()
@@ -37,12 +40,11 @@ public class AZ_GrenadeThrow : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && Time.time >= lastThrowTime + throwCooldown)
 
         {
-
             ThrowGrenade();
-
+            lastThrowTime = Time.time;
         }
 
     }
@@ -60,10 +62,9 @@ public class AZ_GrenadeThrow : MonoBehaviour
         if (rb != null)
 
         {
-
             rb.AddForce(playerCamera.transform.forward * throwForce, ForceMode.VelocityChange);
-
+         
         }
-
+        
     }
 }

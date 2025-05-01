@@ -16,7 +16,10 @@ public class AZ_PlayerShooting : MonoBehaviour
 
     public Camera fpsCamera;                  
 
-    public LayerMask shootingLayer;           
+    public LayerMask shootingLayer;
+    public ParticleSystem muzzleFlash;
+    public AudioClip gunSound;         
+    public AudioSource audioSource;
 
     void Update()
 
@@ -27,7 +30,7 @@ public class AZ_PlayerShooting : MonoBehaviour
         {
 
             Shoot();
-
+            
         }
 
     }
@@ -35,6 +38,17 @@ public class AZ_PlayerShooting : MonoBehaviour
     void Shoot()
 
     {
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.Play();
+
+        }
+
+        if (gunSound != null && audioSource != null)
+        {
+            Debug.Log("жопа");
+            audioSource.PlayOneShot(gunSound);
+        }
 
         RaycastHit hit;
 
