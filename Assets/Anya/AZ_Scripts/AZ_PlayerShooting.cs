@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 public interface IDamageableAZ
 
 {
@@ -21,6 +22,22 @@ public class AZ_PlayerShooting : MonoBehaviour
     public AudioClip gunSound;         
     public AudioSource audioSource;
 
+    public int maxAmmo = 10;                  // Максимальное количество патронов
+    public int currentAmmo;                   // Текущее количество патронов
+    public KeyCode reloadKey = KeyCode.R;     // Кнопка перезарядки
+
+    public TextMeshProUGUI ammoText;
+    public TextMeshProUGUI targetHealthText;
+    
+
+    public GameObject hitEffectPrefab;
+
+    void Start()
+    {
+        currentAmmo = maxAmmo; // Заполнить при старте
+        UpdateUI();
+    }
+
     void Update()
 
     {
@@ -29,8 +46,20 @@ public class AZ_PlayerShooting : MonoBehaviour
 
         {
 
-            Shoot();
-            
+            if (currentAmmo > 0)
+            {
+                Shoot();
+            }
+            else
+            {
+                Debug.Log("Out of ammo! Press 'R' to reload.");
+            }
+
+        }
+
+        if (Input.GetKeyDown(reloadKey))
+        {
+            Reload();
         }
 
     }
@@ -38,6 +67,8 @@ public class AZ_PlayerShooting : MonoBehaviour
     void Shoot()
 
     {
+        currentAmmo--;
+ 
         if (muzzleFlash != null)
         {
             muzzleFlash.Play();
@@ -46,7 +77,6 @@ public class AZ_PlayerShooting : MonoBehaviour
 
         if (gunSound != null && audioSource != null)
         {
-            Debug.Log("жопа");
             audioSource.PlayOneShot(gunSound);
         }
 
@@ -70,12 +100,49 @@ public class AZ_PlayerShooting : MonoBehaviour
 
                 damageable.TakeDamage(damage);
 
+                float remainingHealth = GetHealthFromTarget(hit.transform.gameObject);
+                if (targetHealthText != null)
+                {
+                    targetHealthText.text = "Target Health: " + remainingHealth.ToString("F0");
+                }
+
+                if (hitEffectPrefab != null)
+                {
+                    Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    
+                }
+
             }
 
         }
+        UpdateUI();
 
     }
-    
+    void Reload()
+    {
+        currentAmmo = maxAmmo;
+        Debug.Log("Reloaded!");
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        if (ammoText != null)
+        {
+            ammoText.text = "Ammo: " + currentAmmo + "/" + maxAmmo;
+        }
+    }
+    float GetHealthFromTarget(GameObject target)
+    {
+        // Предполагаем, что у цели есть компонент с публичным полем currentHealth
+        var healthComponent = target.GetComponent<AZ_Enemy>();
+        if (healthComponent != null)
+        {
+            return healthComponent.health;
+        }
+
+        return 0;
+    }
 }
 
 

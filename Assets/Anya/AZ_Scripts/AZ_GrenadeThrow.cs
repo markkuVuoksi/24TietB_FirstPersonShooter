@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,11 @@ public class AZ_GrenadeThrow : MonoBehaviour
     public float throwCooldown = 1f;
 
     private float lastThrowTime = -Mathf.Infinity;
+    
+    public TextMeshProUGUI grenadeText;
+    public int maxGrenades = 3;
+    public int currentGrenades = 3;
+   
 
 
     private void Awake()
@@ -40,13 +46,13 @@ public class AZ_GrenadeThrow : MonoBehaviour
 
     {
 
-        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && Time.time >= lastThrowTime + throwCooldown)
+        if (Input.GetButtonDown("Fire2") && grenadePrefab != null && Time.time >= lastThrowTime + throwCooldown && currentGrenades > 0)
 
         {
             ThrowGrenade();
             lastThrowTime = Time.time;
         }
-
+        UpdateUI();
     }
 
 
@@ -65,6 +71,19 @@ public class AZ_GrenadeThrow : MonoBehaviour
             rb.AddForce(playerCamera.transform.forward * throwForce, ForceMode.VelocityChange);
          
         }
-        
+        currentGrenades--;
+
+    }
+    public void AddGrenades(int amount)
+    {
+        currentGrenades = Mathf.Clamp(currentGrenades + amount, 0, maxGrenades);
+    }
+
+    void UpdateUI()
+    {
+        if (grenadeText != null)
+        {
+            grenadeText.text = $"Grenades: {currentGrenades}/{maxGrenades}";
+        }
     }
 }

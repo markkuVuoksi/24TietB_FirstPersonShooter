@@ -11,14 +11,18 @@ public class AZ_Grenade : MonoBehaviour
 
     public GameObject explosionEffectPrefab; // 🎇 Визуальный эффект
     public AudioClip explosionSound;         // 🔊 Звук взрыва
+    
     private AudioSource audioSource;
 
     private bool hasExploded = false;
+
+   
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(ExplodeAfterDelay());
+
     }
 
     IEnumerator ExplodeAfterDelay()
