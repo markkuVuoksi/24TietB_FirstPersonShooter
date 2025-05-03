@@ -32,6 +32,12 @@ public class AZ_Enemy : MonoBehaviour, IDamageableAZ
 
     }
 
-
+    private void OnDestroy()
+    {
+        if (AZ_GameManager.Instance != null)
+        {
+            AZ_GameManager.Instance.OnEnemyKilled();
+        }
+    }
 }
 

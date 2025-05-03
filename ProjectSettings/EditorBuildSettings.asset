@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ShunLei/SL_Scene/SL_Play_V2(Normal).unity
     guid: 0b3dbba747e932c43959bb4a2232f82f
+  - enabled: 1
+    path: Assets/Anya/AZ_Scenes/AZ_MainMenu.unity
+    guid: e35931eb8a1991f4eb7ae5955ac660d4
+  - enabled: 1
+    path: Assets/Anya/AZ_Scenes/AZ_Scene.unity
+    guid: e9dedc7489bad194faa7ce8a7e7f7131
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
