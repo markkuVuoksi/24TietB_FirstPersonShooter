@@ -1595,9 +1595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868826d5a4b84724faecf612f7535378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 20
+  totalTime: 10
   timerText: {fileID: 82148340}
   isRunning: 1
+  gameManager: {fileID: 1502100694}
 --- !u!4 &1052604647
 Transform:
   m_ObjectHideFlags: 0
@@ -1875,10 +1876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149a9c0d04e4f9044b12ff046919b287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 30
   winScreen: {fileID: 1776517531}
   loseScreen: {fileID: 872492884}
-  timerText: {fileID: 82148340}
 --- !u!4 &1502100695
 Transform:
   m_ObjectHideFlags: 0
@@ -2302,7 +2301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1800559715
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2415,6 +2414,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1821898077
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 242389521706959702, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_Name
+      value: Enemy2
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8557724
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1086222
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.309934
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 287494321153877514, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266617085711371834, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 40997771}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6eff8a069bfe24e428feb1d89eb6475c, type: 3}
 --- !u!1 &1845421446
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3737,14 @@ PrefabInstance:
       propertyPath: explosiveGrenadePrefab
       value: 
       objectReference: {fileID: 4034794271614963, guid: 659bbb85b1baa2d4282da5dcd728e503, type: 3}
+    - target: {fileID: 4264502580183488235, guid: 94820201e6c11364691f81b04ad1a769, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 1776517531}
+    - target: {fileID: 4264502580183488235, guid: 94820201e6c11364691f81b04ad1a769, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 872492884}
     - target: {fileID: 6052049379835229967, guid: 94820201e6c11364691f81b04ad1a769, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3774,6 +3842,7 @@ SceneRoots:
   - {fileID: 1381257293}
   - {fileID: 2045046118829872926}
   - {fileID: 7837140689241762281}
+  - {fileID: 1821898077}
   - {fileID: 1019937614}
   - {fileID: 323317658}
   - {fileID: 1860252043}

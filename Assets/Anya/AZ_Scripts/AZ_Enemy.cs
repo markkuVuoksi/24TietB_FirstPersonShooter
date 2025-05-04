@@ -17,7 +17,6 @@ public class AZ_Enemy : MonoBehaviour, IDamageableAZ
     public void TakeDamage(float damageAmount)
 
     {
-
         health -= damageAmount;
 
         Debug.Log("Enemy health is: " + health);
@@ -30,14 +29,6 @@ public class AZ_Enemy : MonoBehaviour, IDamageableAZ
 
         }
 
-    }
-
-    private void OnDestroy()
-    {
-        if (AZ_GameManager.Instance != null)
-        {
-            AZ_GameManager.Instance.OnEnemyKilled();
-        }
     }
 }
 

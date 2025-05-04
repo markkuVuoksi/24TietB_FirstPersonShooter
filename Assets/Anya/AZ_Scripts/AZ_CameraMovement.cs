@@ -8,6 +8,9 @@ public class AZ_CameraMovement : MonoBehaviour
 
     private float xRotation = 0.0f;
 
+    public GameObject winScreen;
+    public GameObject loseScreen;
+
     private void Start()
 
     {
@@ -15,6 +18,8 @@ public class AZ_CameraMovement : MonoBehaviour
         playerBody = transform.parent;
 
         Cursor.lockState = CursorLockMode.Locked; // lock the cursor in the center of the screen
+        
+        
 
     }
 
@@ -23,6 +28,10 @@ public class AZ_CameraMovement : MonoBehaviour
     {
 
         RotateCamera();
+        if (loseScreen.activeSelf || winScreen.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
 
     }
 

@@ -9,6 +9,7 @@ public class AZ_Timer : MonoBehaviour
 
     public TextMeshProUGUI timerText;
     public bool isRunning = true;
+    public AZ_GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,8 +46,9 @@ public class AZ_Timer : MonoBehaviour
     {
         isRunning = false;
         Debug.Log("⏰ Время вышло!");
+        SendTimerEndToGameManager();
         // Тут можешь вызывать GameManager.Instance.Lose(); или другое
-        AZ_GameManager.Instance.Lose();
+        //AZ_GameManager.Instance.Lose();
     }
 
     public void StopTimer()
@@ -62,5 +64,11 @@ public class AZ_Timer : MonoBehaviour
     public float GetTimeLeft()
     {
         return currentTime;
+    }
+
+    public void SendTimerEndToGameManager()
+    {
+        //tell game manager that timer ends
+        gameManager.RecieveTimerEnded();
     }
 }
